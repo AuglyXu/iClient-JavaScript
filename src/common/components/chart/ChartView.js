@@ -1,7 +1,7 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
-import echarts from "echarts";
+import * as echarts from "echarts";
 import {
     ChartViewModel
 } from "./ChartViewModel";
@@ -140,8 +140,8 @@ export class ChartView {
         this.echart = echarts.init(
             document.getElementById(this.domID),
             null, {
-                renderer: "canvas"
-            }
+            renderer: "canvas"
+        }
         )
         let options = this.viewModel._createChartOptions(data);
         this.echart.setOption(options);
