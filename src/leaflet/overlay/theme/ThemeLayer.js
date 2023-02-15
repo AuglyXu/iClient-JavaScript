@@ -2,13 +2,13 @@
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
-import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
-import { LevelRenderer } from '@supermap/iclient-common/overlay/levelRenderer/LevelRenderer';
-import { ServerFeature } from '@supermap/iclient-common/iServer/ServerFeature';
-import { GeoText } from '@supermap/iclient-common/commontypes/geometry/GeoText';
-import { GeoJSON as GeoJSONFormat } from '@supermap/iclient-common/format/GeoJSON';
-import { Point  } from '@supermap/iclient-common/commontypes/geometry/Point';
-import { Vector as FeatureVector } from '@supermap/iclient-common/commontypes/Vector';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { LevelRenderer } from 'insight-iclient-common/overlay/levelRenderer/LevelRenderer';
+import { ServerFeature } from 'insight-iclient-common/iServer/ServerFeature';
+import { GeoText } from 'insight-iclient-common/commontypes/geometry/GeoText';
+import { GeoJSON as GeoJSONFormat } from 'insight-iclient-common/format/GeoJSON';
+import { Point } from 'insight-iclient-common/commontypes/geometry/Point';
+import { Vector as FeatureVector } from 'insight-iclient-common/commontypes/Vector';
 import {
     ThemeFeature
 } from './ThemeFeature';
@@ -151,7 +151,7 @@ export var ThemeLayer = L.Layer.extend({
         }
         this.removeFeatures(features);
         if (!Array.isArray(features)) {
-          features = [features];
+            features = [features];
         }
         for (var i = features.length - 1; i >= 0; i--) {
             features[i].destroy();
@@ -183,16 +183,16 @@ export var ThemeLayer = L.Layer.extend({
             //如果我们传入的feature在features数组中没有的话，则不进行删除，
             //并将其放入未删除的数组中。
             if (features && typeof features === 'function') {
-              if (features(feature)) {
-                me.features.splice(i--, 1);
-              }
+                if (features(feature)) {
+                    me.features.splice(i--, 1);
+                }
             } else {
-              var findex = L.Util.indexOf(features, feature);
-              if (findex === -1) {
-                  featuresFailRemoved.push(feature);
-              } else {
-                me.features.splice(i--, 1);
-              }
+                var findex = L.Util.indexOf(features, feature);
+                if (findex === -1) {
+                    featuresFailRemoved.push(feature);
+                } else {
+                    me.features.splice(i--, 1);
+                }
             }
         }
 
@@ -251,9 +251,9 @@ export var ThemeLayer = L.Layer.extend({
         var len = this.features.length;
         var clonedFeatures = [];
         for (var i = 0; i < len; ++i) {
-          if (!filter || (filter && typeof filter === 'function' && filter(this.features[i]))) {
-            clonedFeatures.push(this.features[i]);
-          }
+            if (!filter || (filter && typeof filter === 'function' && filter(this.features[i]))) {
+                clonedFeatures.push(this.features[i]);
+            }
         }
         return clonedFeatures;
     },

@@ -6,12 +6,12 @@ import '../core/Base';
 import { ServiceBase } from './ServiceBase';
 import * as Util from '../core/Util';
 import { CommontypesConversion } from '../core/CommontypesConversion';
-import { Point as GeometryPoint } from '@supermap/iclient-common/commontypes/geometry/Point';
-import { DataFormat } from '@supermap/iclient-common/REST';
-import { QueryByBoundsService } from '@supermap/iclient-common/iServer/QueryByBoundsService';
-import { QueryByDistanceService } from '@supermap/iclient-common/iServer/QueryByDistanceService';
-import { QueryBySQLService } from '@supermap/iclient-common/iServer/QueryBySQLService';
-import { QueryByGeometryService } from '@supermap/iclient-common/iServer/QueryByGeometryService';
+import { Point as GeometryPoint } from 'insight-iclient-common/commontypes/geometry/Point';
+import { DataFormat } from 'insight-iclient-common/REST';
+import { QueryByBoundsService } from 'insight-iclient-common/iServer/QueryByBoundsService';
+import { QueryByDistanceService } from 'insight-iclient-common/iServer/QueryByDistanceService';
+import { QueryBySQLService } from 'insight-iclient-common/iServer/QueryBySQLService';
+import { QueryByGeometryService } from 'insight-iclient-common/iServer/QueryByGeometryService';
 
 /**
  * @class  QueryService
@@ -32,7 +32,7 @@ import { QueryByGeometryService } from '@supermap/iclient-common/iServer/QueryBy
  * @usage
  */
 export var QueryService = ServiceBase.extend({
-    initialize: function(url, options) {
+    initialize: function (url, options) {
         ServiceBase.prototype.initialize.call(this, url, options);
     },
     /**
@@ -42,7 +42,7 @@ export var QueryService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    queryByBounds: function(params, callback, resultFormat) {
+    queryByBounds: function (params, callback, resultFormat) {
         var me = this;
         var queryService = new QueryByBoundsService(me.url, {
             proxy: me.options.proxy,
@@ -68,7 +68,7 @@ export var QueryService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    queryByDistance: function(params, callback, resultFormat) {
+    queryByDistance: function (params, callback, resultFormat) {
         var me = this;
         var queryByDistanceService = new QueryByDistanceService(me.url, {
             proxy: me.options.proxy,
@@ -94,7 +94,7 @@ export var QueryService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    queryBySQL: function(params, callback, resultFormat) {
+    queryBySQL: function (params, callback, resultFormat) {
         var me = this;
         var queryBySQLService = new QueryBySQLService(me.url, {
             proxy: me.options.proxy,
@@ -120,7 +120,7 @@ export var QueryService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    queryByGeometry: function(params, callback, resultFormat) {
+    queryByGeometry: function (params, callback, resultFormat) {
         var me = this;
         var queryByGeometryService = new QueryByGeometryService(me.url, {
             proxy: me.options.proxy,
@@ -138,7 +138,7 @@ export var QueryService = ServiceBase.extend({
         queryByGeometryService.processAsync(me._processParams(params));
     },
 
-    _processParams: function(params) {
+    _processParams: function (params) {
         if (!params) {
             return {};
         }
@@ -162,12 +162,12 @@ export var QueryService = ServiceBase.extend({
         return params;
     },
 
-    _processFormat: function(resultFormat) {
+    _processFormat: function (resultFormat) {
         return resultFormat ? resultFormat : DataFormat.GEOJSON;
     }
 });
 
-export var queryService = function(url, options) {
+export var queryService = function (url, options) {
     return new QueryService(url, options);
 };
 

@@ -1,18 +1,18 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../core/Base';
- import { VectorGrid } from './vectortile/VectorGrid';
- import { CartoCSSToLeaflet } from './carto/CartoCSSToLeaflet';
- import { Credential } from '@supermap/iclient-common/commontypes/Credential';
- import { SecurityManager } from '@supermap/iclient-common/security/SecurityManager';
- import { FetchRequest } from '@supermap/iclient-common/util/FetchRequest';
- import { Unit } from '@supermap/iclient-common/REST';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+import L from 'leaflet';
+import '../core/Base';
+import { VectorGrid } from './vectortile/VectorGrid';
+import { CartoCSSToLeaflet } from './carto/CartoCSSToLeaflet';
+import { Credential } from 'insight-iclient-common/commontypes/Credential';
+import { SecurityManager } from 'insight-iclient-common/security/SecurityManager';
+import { FetchRequest } from 'insight-iclient-common/util/FetchRequest';
+import { Unit } from 'insight-iclient-common/REST';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 
- import * as Util from '../core/Util';
- import Attributions from '../core/Attributions';
+import * as Util from '../core/Util';
+import Attributions from '../core/Attributions';
 
 /**
  * @class TiledVectorLayer
@@ -284,7 +284,7 @@ export var TiledVectorLayer = VectorGrid.extend({
         for (var itemKey in shaders) {
             var shader = shaders[itemKey];
             for (var j = 0; j < shader.length; j++) {
-                var serverStyle = this.cartoCSSToLeaflet.getValidStyleFromCarto(coords.z, scale, shader[j], feature,this.options.serverCartoCSSStyle);
+                var serverStyle = this.cartoCSSToLeaflet.getValidStyleFromCarto(coords.z, scale, shader[j], feature, this.options.serverCartoCSSStyle);
                 if (serverStyle) {
                     style.push(serverStyle);
                 }
@@ -294,7 +294,7 @@ export var TiledVectorLayer = VectorGrid.extend({
         feature = this._mergeFeatureTextField(feature, style);
 
         //次优先级是layers资源的默认的样式，最低优先级是CartoDefaultStyle的样式
-        if (feature.type === "TEXT" ||  style.length === 0) {
+        if (feature.type === "TEXT" || style.length === 0) {
             style = this.cartoCSSToLeaflet.getValidStyleFromLayerInfo(feature, layerStyleInfo);
             if (feature.type === "TEXT") {
                 style.textName = "[" + feature.properties.textField + "]";
@@ -439,7 +439,7 @@ export var TiledVectorLayer = VectorGrid.extend({
             return;
         }
         var format = options.format.toString().toLowerCase();
-        this._tileUrl = CommonUtil.urlPathAppend(this.url, "tileFeature." + format );
+        this._tileUrl = CommonUtil.urlPathAppend(this.url, "tileFeature." + format);
         this._tileUrl = CommonUtil.urlAppend(this._tileUrl, encodeURI(this._createURLParam(options)));
     },
 

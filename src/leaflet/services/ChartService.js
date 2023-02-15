@@ -1,14 +1,14 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../core/Base';
- import { ChartQueryService } from '@supermap/iclient-common/iServer/ChartQueryService';
- import { ChartFeatureInfoSpecsService } from '@supermap/iclient-common/iServer/ChartFeatureInfoSpecsService';
- import { DataFormat } from '@supermap/iclient-common/REST';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
- import { ServiceBase } from './ServiceBase';
- import { CommontypesConversion } from '../core/CommontypesConversion';
+import L from 'leaflet';
+import '../core/Base';
+import { ChartQueryService } from 'insight-iclient-common/iServer/ChartQueryService';
+import { ChartFeatureInfoSpecsService } from 'insight-iclient-common/iServer/ChartFeatureInfoSpecsService';
+import { DataFormat } from 'insight-iclient-common/REST';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { ServiceBase } from './ServiceBase';
+import { CommontypesConversion } from '../core/CommontypesConversion';
 /**
  * @class ChartService
  * @deprecatedclassinstance L.supermap.chartService
@@ -48,8 +48,8 @@ export var ChartService = ServiceBase.extend({
         var chartQueryService = new ChartQueryService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 scope: me,
                 processCompleted: callback,
@@ -72,8 +72,8 @@ export var ChartService = ServiceBase.extend({
         var chartFeatureInfoSpecsService = new ChartFeatureInfoSpecsService(url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 scope: me,
                 processCompleted: callback,

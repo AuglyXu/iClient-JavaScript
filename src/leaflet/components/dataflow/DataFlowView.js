@@ -1,11 +1,11 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import { ComponentsViewBase } from '../ComponentsViewBase';
- import { DataFlowViewModel } from './DataFlowViewModel';
- import { CommonContainer } from '@supermap/iclient-common/components/templates/CommonContainer';
- import { MessageBox } from '@supermap/iclient-common/components/messagebox/MessageBox';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
+import { ComponentsViewBase } from '../ComponentsViewBase';
+import { DataFlowViewModel } from './DataFlowViewModel';
+import { CommonContainer } from 'insight-iclient-common/components/templates/CommonContainer';
+import { MessageBox } from 'insight-iclient-common/components/messagebox/MessageBox';
+import { Lang } from 'insight-iclient-common/lang/Lang';
 
 /**
  * @class DataFlowView
@@ -32,7 +32,7 @@
  */
 export var DataFlowView = ComponentsViewBase.extend({
     initialize(options) {
-      ComponentsViewBase.prototype.initialize.apply(this, [options]);
+        ComponentsViewBase.prototype.initialize.apply(this, [options]);
     },
 
     /**
@@ -62,7 +62,7 @@ export var DataFlowView = ComponentsViewBase.extend({
      * @override
      */
     _initView() {
-        const containerObj = new CommonContainer({title: Lang.i18n("title_dataFlowService")});
+        const containerObj = new CommonContainer({ title: Lang.i18n("title_dataFlowService") });
         const container = containerObj.getElement();
 
         const componentContent = containerObj.getContentElement();

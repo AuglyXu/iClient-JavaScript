@@ -3,9 +3,9 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L, { Util, Layer, ImageOverlay } from 'leaflet';
 import '../core/Base';
-import { ServerGeometry } from '@supermap/iclient-common/iServer/ServerGeometry';
-import { SecurityManager } from '@supermap/iclient-common/security/SecurityManager';
-import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+import { ServerGeometry } from 'insight-iclient-common/iServer/ServerGeometry';
+import { SecurityManager } from 'insight-iclient-common/security/SecurityManager';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 import Attributions from '../core/Attributions';
 import { toSuperMapGeometry } from '../core/Util';
 /**
@@ -90,7 +90,7 @@ export var ImageMapLayer = Layer.extend({
         format: 'png'
     },
 
-    initialize: function(url, options) {
+    initialize: function (url, options) {
         this._url = url;
         Util.setOptions(this, options);
     },
@@ -101,7 +101,7 @@ export var ImageMapLayer = Layer.extend({
      * @description 添加到地图。
      * @param {L.Map} map - Leaflet Map 对象。
      */
-    onAdd: function(map) {
+    onAdd: function (map) {
         this.update = Util.throttle(this.update, this.options.updateInterval, this);
         map.on('moveend', this.update, this);
 
@@ -119,7 +119,7 @@ export var ImageMapLayer = Layer.extend({
      * @function ImageMapLayer.prototype.onRemove
      * @description 从地图上移除。
      */
-    onRemove: function() {
+    onRemove: function () {
         // eslint-disable-line no-unused-vars
         if (this._currentImage) {
             this._map.removeLayer(this._currentImage);
@@ -131,7 +131,7 @@ export var ImageMapLayer = Layer.extend({
      * @function ImageMapLayer.prototype.bringToFront
      * @description 置顶当前图层。
      */
-    bringToFront: function() {
+    bringToFront: function () {
         this.options.position = 'front';
         if (this._currentImage) {
             this._currentImage.bringToFront();
@@ -143,7 +143,7 @@ export var ImageMapLayer = Layer.extend({
      * @function ImageMapLayer.prototype.bringToFront
      * @description 置底当前图层。
      */
-    bringToBack: function() {
+    bringToBack: function () {
         this.options.position = 'back';
         if (this._currentImage) {
             this._currentImage.bringToBack();
@@ -156,7 +156,7 @@ export var ImageMapLayer = Layer.extend({
      * @description 获取图层透明度。
      * @returns {number} 图层的透明度。
      */
-    getOpacity: function() {
+    getOpacity: function () {
         return this.options.opacity;
     },
 
@@ -164,7 +164,7 @@ export var ImageMapLayer = Layer.extend({
      * @function ImageMapLayer.prototype.setOpacity
      * @description 设置图层不透明度。
      */
-    setOpacity: function(opacity) {
+    setOpacity: function (opacity) {
         this.options.opacity = opacity;
         if (this._currentImage) {
             this._currentImage.setOpacity(opacity);
@@ -177,7 +177,7 @@ export var ImageMapLayer = Layer.extend({
      * @description 获取 image 图层请求地址，子类可重写实现。
      * @returns {string} 请求瓦片地址。
      */
-    getImageUrl: function(params) {
+    getImageUrl: function (params) {
         let serviceUrl = CommonUtil.urlPathAppend(this._url, `image.${this.options.format}`);
         let imageUrl =
             serviceUrl + Util.getParamString(Object.assign({}, this._initAllRequestParams(), params), serviceUrl);
@@ -193,7 +193,7 @@ export var ImageMapLayer = Layer.extend({
     },
 
     //获取请求瓦片宽高以及请求范围参数
-    _getImageParams: function() {
+    _getImageParams: function () {
         var size = this._calculateImageSize();
         return {
             viewBounds: this._compriseBounds(this._calculateBounds()),
@@ -203,7 +203,7 @@ export var ImageMapLayer = Layer.extend({
     },
 
     //初始化服务请求参数
-    _initAllRequestParams: function() {
+    _initAllRequestParams: function () {
         var me = this,
             options = me.options || {},
             params = {};
@@ -245,13 +245,13 @@ export var ImageMapLayer = Layer.extend({
     },
 
     //初始化请求链接
-    _requestImage: function(params, bounds) {
+    _requestImage: function (params, bounds) {
         var imageUrl = this.getImageUrl(params);
         this._loadImage(imageUrl, bounds);
     },
 
     //加载请求图层
-    _loadImage: function(url, bounds) {
+    _loadImage: function (url, bounds) {
         if (!this._map) {
             return;
         }
@@ -267,7 +267,7 @@ export var ImageMapLayer = Layer.extend({
             interactive: this.options.interactive
         }).addTo(this._map);
 
-        var onLoad = function(e) {
+        var onLoad = function (e) {
             image.off('error', onError, this);
             var map = this._map;
             if (!map) {
@@ -305,14 +305,14 @@ export var ImageMapLayer = Layer.extend({
              */
             this.fire('load', { bounds: bounds });
         };
-        var onError = function() {
-          this._map.removeLayer(image);
-          /**
-           * @event ImageMapLayer#error
-           * @description 请求图层加载失败后触发。
-           */
-          this.fire('error');
-          image.off('load', onLoad, this);
+        var onError = function () {
+            this._map.removeLayer(image);
+            /**
+             * @event ImageMapLayer#error
+             * @description 请求图层加载失败后触发。
+             */
+            this.fire('error');
+            image.off('load', onLoad, this);
         }
 
         image.once('load', onLoad, this);
@@ -331,14 +331,14 @@ export var ImageMapLayer = Layer.extend({
      * @function ImageMapLayer.prototype.update
      * @description 更新图层。
      */
-    update: function() {
+    update: function () {
         if (!this._map) {
             return;
         }
 
         var zoom = this._map.getZoom();
         var bounds = this._map.getBounds();
-        if (zoom > (this._map.options.maxZoom|| 18) || zoom < (this._map.options.minZoom || 0)) {
+        if (zoom > (this._map.options.maxZoom || 18) || zoom < (this._map.options.minZoom || 0)) {
             if (this._currentImage) {
                 this._currentImage._map.removeLayer(this._currentImage);
                 this._currentImage = null;
@@ -355,7 +355,7 @@ export var ImageMapLayer = Layer.extend({
     },
 
     //将像素坐标转成点坐标
-    _calculateBounds: function() {
+    _calculateBounds: function () {
         var pixelBounds = this._map.getPixelBounds();
         var sw = this._map.unproject(pixelBounds.getBottomLeft());
         var ne = this._map.unproject(pixelBounds.getTopRight());
@@ -365,7 +365,7 @@ export var ImageMapLayer = Layer.extend({
     },
 
     //转换viewBounds为JSON字符串
-    _compriseBounds: function(boundsProjected) {
+    _compriseBounds: function (boundsProjected) {
         var projBounds = {
             leftBottom: {
                 x: boundsProjected.getBottomLeft().x,
@@ -380,7 +380,7 @@ export var ImageMapLayer = Layer.extend({
     },
 
     //计算图层的宽高
-    _calculateImageSize: function() {
+    _calculateImageSize: function () {
         var map = this._map;
         var bounds = map.getPixelBounds();
         var size = map.getSize();
@@ -398,6 +398,6 @@ export var ImageMapLayer = Layer.extend({
     }
 });
 
-export var imageMapLayer = function(url, options) {
+export var imageMapLayer = function (url, options) {
     return new ImageMapLayer(url, options);
 };

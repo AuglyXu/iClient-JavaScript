@@ -1,9 +1,9 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../../core/Base';
- import { FetchRequest } from '@supermap/iclient-common/util/FetchRequest';
+import L from 'leaflet';
+import '../../core/Base';
+import { FetchRequest } from 'insight-iclient-common/util/FetchRequest';
 
 /**
  * @class DistributedAnalysisModel
@@ -18,7 +18,7 @@
  * @extends {L.Evented}
  */
 export class DistributedAnalysisModel extends L.Evented {
-    
+
     initialize(processingUrl) {
         this.processingUrl = processingUrl
     }
@@ -59,7 +59,7 @@ export class DistributedAnalysisModel extends L.Evented {
                  * @property {Object} result - 数据集数据。
                  * @property {Array.<string>} result.dataset - 数据集名称数组。
                  * @property {Object} result.datasetHash - 数据集名称数组与数据集 URL 一一对应的对象。
-                 */ 
+                 */
                 _me.fire('datasetsloaded', { 'result': { 'dataset': _me.dataset, 'datasetHash': datasetHash } });
 
             });
@@ -96,7 +96,7 @@ export class DistributedAnalysisModel extends L.Evented {
                  * @property {Object} result - 数据集数据。
                  * @property {string} result.type - 数据集类型。
                  * @property {Array.<string>} result.fields - 数据集字段。
-                 */ 
+                 */
                 me.fire('datasetinfoloaded', { 'result': { 'type': type, 'fields': fields } })
             } else {
                 let fieldsUrl = data.childUriList[0].replace('//fields', '/fields');

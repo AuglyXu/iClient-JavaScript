@@ -3,7 +3,7 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
 import '../core/Base';
-import echarts from "echarts";
+import * as echarts from "echarts";
 import Attributions from '../core/Attributions'
 
 /**
@@ -71,7 +71,7 @@ export const EchartsLayer = L.Layer.extend({
         this._map = map;
         this._initEchartsContainer();
         this._ec = echarts.init(this._echartsContainer);
-        this._ec.leafletMap= map;
+        this._ec.leafletMap = map;
         const me = this;
         map.on("zoomstart", function () {
             me._disableEchartsContainer();
@@ -83,7 +83,7 @@ export const EchartsLayer = L.Layer.extend({
             type: 'LeafletMapLayout',
             event: 'LeafletMapLayout',
             update: 'updateLayout'
-        }, function (payload ) { // eslint-disable-line no-unused-vars
+        }, function (payload) { // eslint-disable-line no-unused-vars
         });
         echarts.registerCoordinateSystem(
             'leaflet', LeafletMapCoordSys
@@ -180,7 +180,7 @@ export const EchartsLayer = L.Layer.extend({
         this._ec.dispose();
         delete this._ec;
         L.DomUtil.remove(this._echartsContainer);
-        
+
         if (this._oldZoomEndHandler) {
             this._map.off("zoomend", this._oldZoomEndHandler);
             this._oldZoomEndHandler = null;
@@ -339,16 +339,16 @@ LeafletMapCoordSys.create = function (ecModel) {
 };
 
 function _getMapOffset(map) {
-  const offset = map.containerPointToLayerPoint([0, 0]);
-  const mapOffset = [offset.x || 0, offset.y || 0];
-  return mapOffset;
+    const offset = map.containerPointToLayerPoint([0, 0]);
+    const mapOffset = [offset.x || 0, offset.y || 0];
+    return mapOffset;
 }
 
 function _setCanvasPosition(map, viewportRoot) {
-  const mapOffset = _getMapOffset(map);
-  viewportRoot.style.left = mapOffset[0] + 'px';
-  viewportRoot.style.top = mapOffset[1] + 'px';
-  return mapOffset;
+    const mapOffset = _getMapOffset(map);
+    viewportRoot.style.left = mapOffset[0] + 'px';
+    viewportRoot.style.top = mapOffset[1] + 'px';
+    return mapOffset;
 }
 export const echartsLayer = function (echartsOptions, options) {
     return new EchartsLayer(echartsOptions, options);

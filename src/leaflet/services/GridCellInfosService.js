@@ -1,10 +1,10 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
-import {ServiceBase} from './ServiceBase';
+import { ServiceBase } from './ServiceBase';
 import '../core/Base';
-import { GetGridCellInfosService } from '@supermap/iclient-common/iServer/GetGridCellInfosService';
-import { GetGridCellInfosParameters } from '@supermap/iclient-common/iServer/GetGridCellInfosParameters';
+import { GetGridCellInfosService } from 'insight-iclient-common/iServer/GetGridCellInfosService';
+import { GetGridCellInfosParameters } from 'insight-iclient-common/iServer/GetGridCellInfosParameters';
 
 /**
  * @class GridCellInfosService
@@ -45,7 +45,7 @@ export var GridCellInfosService = ServiceBase.extend({
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
             crossOrigin: me.options.crossOrigin,
-            headers:me.options.headers,
+            headers: me.options.headers,
             eventListeners: {
                 scope: me,
                 processCompleted: callback,

@@ -1,11 +1,11 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../core/Base';
- import { ServiceBase } from './ServiceBase';
- import { WebPrintingService } from '@supermap/iclient-common/iServer/WebPrintingService';
- import { Point as GeometryPoint } from '@supermap/iclient-common/commontypes/geometry/Point';
+import L from 'leaflet';
+import '../core/Base';
+import { ServiceBase } from './ServiceBase';
+import { WebPrintingService } from 'insight-iclient-common/iServer/WebPrintingService';
+import { Point as GeometryPoint } from 'insight-iclient-common/commontypes/geometry/Point';
 
 /**
  * @class WebPrintingJobService
@@ -29,7 +29,7 @@
  * @usage
  */
 export var WebPrintingJobService = ServiceBase.extend({
-    initialize: function(url, options) {
+    initialize: function (url, options) {
         ServiceBase.prototype.initialize.call(this, url, options);
     },
 
@@ -66,7 +66,7 @@ export var WebPrintingJobService = ServiceBase.extend({
      * @param {string} jobId - Web 打印输入文档任务 Id。
      * @param {RequestCallback} callback - 回调函数。
      */
-    getPrintingJob: function(jobId, callback) {
+    getPrintingJob: function (jobId, callback) {
         var me = this;
         var webPrintingService = new WebPrintingService(me.url, {
             proxy: me.options.proxy,
@@ -90,7 +90,7 @@ export var WebPrintingJobService = ServiceBase.extend({
      * @param {string} jobId - Web 打印输入文档任务 Id。
      * @param {RequestCallback} callback - 回调函数。
      */
-    getPrintingJobResult: function(jobId, callback) {
+    getPrintingJobResult: function (jobId, callback) {
         var me = this;
         var webPrintingService = new WebPrintingService(me.url, {
             proxy: me.options.proxy,
@@ -113,7 +113,7 @@ export var WebPrintingJobService = ServiceBase.extend({
      * @description 查询 Web 打印服务所有可用的模板信息。
      * @param {RequestCallback} callback - 回调函数。
      */
-    getLayoutTemplates: function(callback) {
+    getLayoutTemplates: function (callback) {
         var me = this;
         var webPrintingService = new WebPrintingService(me.url, {
             proxy: me.options.proxy,
@@ -163,7 +163,7 @@ export var WebPrintingJobService = ServiceBase.extend({
     }
 });
 
-export var webPrintingJobService = function(url, options) {
+export var webPrintingJobService = function (url, options) {
     return new WebPrintingJobService(url, options);
 };
 

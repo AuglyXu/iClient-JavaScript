@@ -4,7 +4,7 @@
 import L from 'leaflet';
 import '../core/Base';
 import { Detector } from '../core/Detector';
-import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 import { GraphicCanvasRenderer, GraphicWebGLRenderer, CircleStyle } from './graphic';
 
 const Renderer = ['canvas', 'webgl'];
@@ -286,8 +286,8 @@ export var GraphicLayer = L.Path.extend({
         let longitude = center.lng;
         let latitude = center.lat;
         let zoomOffset = DEFAULT_ZOOM_OFFSET[this._crs.code] || 0;
-        if(BASE_RESOLUTIONS[this._crs.code] && this._crs.resolutions && this._crs.resolutions.length > 0 ){
-            zoomOffset = Math.round(Math.log2(BASE_RESOLUTIONS[this._crs.code]/this._crs.resolutions[0]))
+        if (BASE_RESOLUTIONS[this._crs.code] && this._crs.resolutions && this._crs.resolutions.length > 0) {
+            zoomOffset = Math.round(Math.log2(BASE_RESOLUTIONS[this._crs.code] / this._crs.resolutions[0]))
         }
         let zoom = map.getZoom() + zoomOffset;
         let maxZoom = map.getMaxZoom() + zoomOffset;

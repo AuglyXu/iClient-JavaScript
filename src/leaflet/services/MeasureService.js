@@ -1,12 +1,12 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
-import {ServiceBase} from './ServiceBase';
+import { ServiceBase } from './ServiceBase';
 import '../core/Base';
 import * as Util from '../core/Util';
-import { MeasureMode } from '@supermap/iclient-common/REST';
-import { MeasureService as CommonMeasureService } from '@supermap/iclient-common/iServer/MeasureService';
-import { MeasureParameters } from '@supermap/iclient-common/iServer/MeasureParameters';
+import { MeasureMode } from 'insight-iclient-common/REST';
+import { MeasureService as CommonMeasureService } from 'insight-iclient-common/iServer/MeasureService';
+import { MeasureParameters } from 'insight-iclient-common/iServer/MeasureParameters';
 
 /**
  * @class MeasureService

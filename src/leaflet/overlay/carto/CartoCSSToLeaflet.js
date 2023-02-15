@@ -3,9 +3,9 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
 import '../../core/Base';
-import { Util, DOTS_PER_INCH, INCHES_PER_UNIT } from '@supermap/iclient-common/commontypes/Util';
-import { CartoCSS } from '@supermap/iclient-common/style/CartoCSS';
-import { StringExt } from '@supermap/iclient-common/commontypes/BaseTypes';
+import { Util, DOTS_PER_INCH, INCHES_PER_UNIT } from 'insight-iclient-common/commontypes/Util';
+import { CartoCSS } from 'insight-iclient-common/style/CartoCSS';
+import { StringExt } from 'insight-iclient-common/commontypes/BaseTypes';
 import {
     DefaultStyle
 } from './CartoDefaultStyle';

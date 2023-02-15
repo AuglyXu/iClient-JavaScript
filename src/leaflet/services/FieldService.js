@@ -3,10 +3,10 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
 import '../core/Base';
-import {ServiceBase} from './ServiceBase';
-import { GetFieldsService } from '@supermap/iclient-common/iServer/GetFieldsService';
-import { FieldStatisticService } from '@supermap/iclient-common/iServer/FieldStatisticService';
-import { FieldStatisticsParameters } from '@supermap/iclient-common/iServer/FieldStatisticsParameters';
+import { ServiceBase } from './ServiceBase';
+import { GetFieldsService } from 'insight-iclient-common/iServer/GetFieldsService';
+import { FieldStatisticService } from 'insight-iclient-common/iServer/FieldStatisticService';
+import { FieldStatisticsParameters } from 'insight-iclient-common/iServer/FieldStatisticsParameters';
 
 /**
  * @class  FieldService
@@ -28,8 +28,8 @@ import { FieldStatisticsParameters } from '@supermap/iclient-common/iServer/Fiel
  */
 export var FieldService = ServiceBase.extend({
 
-    initialize: function (url,options) {
-        ServiceBase.prototype.initialize.call(this, url,options);
+    initialize: function (url, options) {
+        ServiceBase.prototype.initialize.call(this, url, options);
     },
 
     /**
@@ -43,7 +43,7 @@ export var FieldService = ServiceBase.extend({
         var getFieldsService = new GetFieldsService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
+            crossOrigin: me.options.crossOrigin,
             headers: me.options.headers,
             eventListeners: {
                 scope: me,
@@ -72,7 +72,7 @@ export var FieldService = ServiceBase.extend({
         if (modes && !L.Util.isArray(modes)) {
             modes = [modes];
         }
-        me.currentStatisticResult = {fieldName: fieldName};
+        me.currentStatisticResult = { fieldName: fieldName };
         me._statisticsCallback = callback;
         //针对每种统计方式分别进行请求
         modes.forEach(mode => {
@@ -116,7 +116,7 @@ export var FieldService = ServiceBase.extend({
             }
         }
         if (getAll) {
-            me._statisticsCallback({result: me.currentStatisticResult});
+            me._statisticsCallback({ result: me.currentStatisticResult });
         }
     }
 });

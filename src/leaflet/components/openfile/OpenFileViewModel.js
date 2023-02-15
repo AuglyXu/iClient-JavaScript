@@ -1,12 +1,12 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../../core/Base';
- import { FileModel } from '@supermap/iclient-common/components/openfile/FileModel';
- import { FileReaderUtil } from '@supermap/iclient-common/components/util/FileReaderUtil';
- import { ComponentsUtil } from '@supermap/iclient-common/components/util/Util';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
+import L from 'leaflet';
+import '../../core/Base';
+import { FileModel } from 'insight-iclient-common/components/openfile/FileModel';
+import { FileReaderUtil } from 'insight-iclient-common/components/util/FileReaderUtil';
+import { ComponentsUtil } from 'insight-iclient-common/components/util/Util';
+import { Lang } from 'insight-iclient-common/lang/Lang';
 
 /**
  * @class OpenFileViewModel
@@ -45,7 +45,7 @@ export var OpenFileViewModel = L.Evented.extend({
              * @property {string} messageType - 警告类型。
              * @property {string} message - 警告内容。
              */
-            this.fire("filesizeexceed", {messageType: "warring", message: Lang.i18n('msg_fileSizeExceeded')});
+            this.fire("filesizeexceed", { messageType: "warring", message: Lang.i18n('msg_fileSizeExceeded') });
             return false;
         }
 
@@ -61,7 +61,7 @@ export var OpenFileViewModel = L.Evented.extend({
              * @property {string} messageType - 警告类型。
              * @property {string} message - 警告内容。
              */
-            this.fire("errorfileformat", {messageType: "failure", message: Lang.i18n('msg_fileTypeUnsupported')});
+            this.fire("errorfileformat", { messageType: "failure", message: Lang.i18n('msg_fileTypeUnsupported') });
             return false;
         }
         //文件类型限制
@@ -70,11 +70,11 @@ export var OpenFileViewModel = L.Evented.extend({
             //todo MVVM模式 应该是数据变化触发数据变化的事件
             this.fileModel.set(
                 "loadFileObject", {
-                    file: file,
-                    filePath: filePath,
-                    fileName: fileName,
-                    fileType: fileType
-                });
+                file: file,
+                filePath: filePath,
+                fileName: fileName,
+                fileType: fileType
+            });
             //响应选中文件添加到地图
             this._readData();
         }
@@ -108,7 +108,7 @@ export var OpenFileViewModel = L.Evented.extend({
                     });
                 }
             }, (e) => {
-                me.fire("openfilefailed", {messageType: "failure", message: e});
+                me.fire("openfilefailed", { messageType: "failure", message: e });
             }, this);
         }, () => {
             /**
@@ -117,7 +117,7 @@ export var OpenFileViewModel = L.Evented.extend({
              * @property {string} messageType - 警告类型。
              * @property {string} message - 警告内容。
              */
-            me.fire("openfilefailed", {messageType: "failure", message: Lang.i18n('msg_openFileFail')});
+            me.fire("openfilefailed", { messageType: "failure", message: Lang.i18n('msg_openFileFail') });
         }, this);
     }
 

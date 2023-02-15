@@ -1,9 +1,9 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import '../core/Base';
- import { GeoFeatureThemeLayer } from './theme/GeoFeatureThemeLayer';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+import '../core/Base';
+import { GeoFeatureThemeLayer } from './theme/GeoFeatureThemeLayer';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 /**
  * @class UniqueThemeLayer
  * @deprecatedclassinstance L.supermap.uniqueThemeLayer
@@ -29,16 +29,16 @@
  */
 export var UniqueThemeLayer = GeoFeatureThemeLayer.extend({
 
-    
+
     /** 
      * @member {Object} UniqueThemeLayer.prototype.style
      * @description 专题图样式。
      */
-    
-     /** 
-     * @member {Object} UniqueThemeLayer.prototype.styleGroups
-     * @description 各专题类型样式组。
-     */
+
+    /** 
+    * @member {Object} UniqueThemeLayer.prototype.styleGroups
+    * @description 各专题类型样式组。
+    */
 
     /** 
      * @member {Object} UniqueThemeLayer.prototype.highlightStyle
@@ -97,7 +97,7 @@ export var UniqueThemeLayer = GeoFeatureThemeLayer.extend({
         //判断属性值是否属于styleGroups的某一个范围，以便对获取分组 style
         if (isSfInAttributes) {
             for (var i = 0, len = groups.length; i < len; i++) {
-                if ((attribute).toString() === ( groups[i].value).toString()) {
+                if ((attribute).toString() === (groups[i].value).toString()) {
                     var sty1 = groups[i].style;
                     style = CommonUtil.copyAttributesWithClip(style, sty1);
                 }

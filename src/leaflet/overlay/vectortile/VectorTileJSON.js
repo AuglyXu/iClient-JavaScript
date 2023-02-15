@@ -2,9 +2,9 @@
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
-import {VectorFeatureType} from "./VectorFeatureType";
+import { VectorFeatureType } from "./VectorFeatureType";
 import * as Util from "../../core/Util";
-import { FetchRequest } from '@supermap/iclient-common/util/FetchRequest';
+import { FetchRequest } from 'insight-iclient-common/util/FetchRequest';
 
 /**
  * @class VectorTileJSON
@@ -127,7 +127,7 @@ export var VectorTileJSON = L.Class.extend({
                     for (var l = 0, index = startIndex; l < partPointsLength; l += 2, index += 2) {
                         var x = feature.geometry.points[index];
                         var y = feature.geometry.points[index + 1];
-                        points.push({x: x, y: y});
+                        points.push({ x: x, y: y });
                     }
                     startIndex += partPointsLength;
                 }

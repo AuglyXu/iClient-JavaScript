@@ -1,15 +1,15 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L, { Util as LUtil } from 'leaflet';
- import '../core/Base';
- import { SecurityManager } from '@supermap/iclient-common/security/SecurityManager';
- import { ServerGeometry } from '@supermap/iclient-common/iServer/ServerGeometry';
- import { Unit } from '@supermap/iclient-common/REST';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
- 
- import * as Util from '../core/Util';
- import Attributions from '../core/Attributions';
+import L, { Util as LUtil } from 'leaflet';
+import '../core/Base';
+import { SecurityManager } from 'insight-iclient-common/security/SecurityManager';
+import { ServerGeometry } from 'insight-iclient-common/iServer/ServerGeometry';
+import { Unit } from 'insight-iclient-common/REST';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+
+import * as Util from '../core/Util';
+import Attributions from '../core/Attributions';
 
 /**
  * @class TiledMapLayer
@@ -65,7 +65,7 @@ export var TiledMapLayer = L.TileLayer.extend({
         crs: null,
         format: 'png',
         //启用托管地址。
-        tileProxy:null,
+        tileProxy: null,
         attribution: Attributions.Common.attribution,
         subdomains: null
     },
@@ -110,7 +110,7 @@ export var TiledMapLayer = L.TileLayer.extend({
             tileUrl += "&_t=" + new Date().getTime();
         }
         if (this.options.subdomains) {
-            tileUrl = L.Util.template(tileUrl, {s: this._getSubdomain(coords)});
+            tileUrl = L.Util.template(tileUrl, { s: this._getSubdomain(coords) });
         }
         return tileUrl;
     },

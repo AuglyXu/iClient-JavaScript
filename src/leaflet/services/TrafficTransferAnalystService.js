@@ -4,9 +4,9 @@
 import L from 'leaflet';
 import '../core/Base';
 import { ServiceBase } from './ServiceBase';
-import { StopQueryService } from '@supermap/iclient-common/iServer/StopQueryService';
-import { TransferPathService } from '@supermap/iclient-common/iServer/TransferPathService';
-import { TransferSolutionService } from '@supermap/iclient-common/iServer/TransferSolutionService';
+import { StopQueryService } from 'insight-iclient-common/iServer/StopQueryService';
+import { TransferPathService } from 'insight-iclient-common/iServer/TransferPathService';
+import { TransferSolutionService } from 'insight-iclient-common/iServer/TransferSolutionService';
 
 /**
  * @class TrafficTransferAnalystService
@@ -27,7 +27,7 @@ import { TransferSolutionService } from '@supermap/iclient-common/iServer/Transf
  * @usage
  */
 export var TrafficTransferAnalystService = ServiceBase.extend({
-    initialize: function(url, options) {
+    initialize: function (url, options) {
         ServiceBase.prototype.initialize.call(this, url, options);
     },
 
@@ -37,7 +37,7 @@ export var TrafficTransferAnalystService = ServiceBase.extend({
      * @param {StopQueryParameters} params - 站点查询参数类。
      * @param {RequestCallback} callback - 回调函数。
      */
-    queryStop: function(params, callback) {
+    queryStop: function (params, callback) {
         var me = this;
         var stopQueryService = new StopQueryService(me.url, {
             proxy: me.options.proxy,
@@ -59,7 +59,7 @@ export var TrafficTransferAnalystService = ServiceBase.extend({
      * @param {TransferPathParameters} params - 交通换乘线路查询参数类。
      * @param {RequestCallback} callback - 回调函数。
      */
-    analysisTransferPath: function(params, callback) {
+    analysisTransferPath: function (params, callback) {
         var me = this;
         var transferPathService = new TransferPathService(me.url, {
             proxy: me.options.proxy,
@@ -81,7 +81,7 @@ export var TrafficTransferAnalystService = ServiceBase.extend({
      * @param {TransferSolutionParameters} params - 交通换乘方案查询参数类。
      * @param {RequestCallback} callback - 回调函数。
      */
-    analysisTransferSolution: function(params, callback) {
+    analysisTransferSolution: function (params, callback) {
         var me = this;
         var transferSolutionService = new TransferSolutionService(me.url, {
             proxy: me.options.proxy,
@@ -97,13 +97,13 @@ export var TrafficTransferAnalystService = ServiceBase.extend({
         transferSolutionService.processAsync(me._processParams(params));
     },
 
-    _processParams: function(params) {
+    _processParams: function (params) {
         if (!params) {
             return {};
         }
 
         if (params.points && L.Util.isArray(params.points)) {
-            params.points.map(function(point, key) {
+            params.points.map(function (point, key) {
                 params.points[key] = point instanceof L.LatLng ? { x: point.lng, y: point.lat } : point;
                 return params.points[key];
             });
@@ -112,7 +112,7 @@ export var TrafficTransferAnalystService = ServiceBase.extend({
     }
 });
 
-export var trafficTransferAnalystService = function(url, options) {
+export var trafficTransferAnalystService = function (url, options) {
     return new TrafficTransferAnalystService(url, options);
 };
 

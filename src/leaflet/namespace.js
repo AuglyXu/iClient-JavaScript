@@ -4,7 +4,7 @@
 import {
   CommonUtil,
   SuperMap
-} from '@supermap/iclient-common/namespace';
+} from 'insight-iclient-common/namespace';
 
 import { Logo, logo, ChangeTileVersion, changeTileVersion } from './control';
 

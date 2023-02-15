@@ -1,14 +1,14 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../core/Base';
- import { Theme as FeatureTheme } from '@supermap/iclient-common/overlay/feature/Theme';
- import { LonLat } from '@supermap/iclient-common/commontypes/LonLat';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
- import { Bounds } from '@supermap/iclient-common/commontypes/Bounds';
- import { ThemeLayer } from './theme/ThemeLayer';
- import { CommontypesConversion } from '../core/CommontypesConversion';
+import L from 'leaflet';
+import '../core/Base';
+import { Theme as FeatureTheme } from 'insight-iclient-common/overlay/feature/Theme';
+import { LonLat } from 'insight-iclient-common/commontypes/LonLat';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { Bounds } from 'insight-iclient-common/commontypes/Bounds';
+import { ThemeLayer } from './theme/ThemeLayer';
+import { CommontypesConversion } from '../core/CommontypesConversion';
 /**
  * @class GraphThemeLayer
  * @deprecatedclassinstance L.supermap.graphThemeLayer
@@ -81,7 +81,7 @@ export var GraphThemeLayer = ThemeLayer.extend({
          * @description 向专题图图层中添加数据之前触发。
          * @property {(Array.<ServerFeature>|Array.<ThemeFeature>|Array.<GeoJSONObject>|ServerFeature|ThemeFeature|GeoJSONObject)} features  - 待添加的要素。
          */
-        me.fire("beforefeaturesadded", {features: features});
+        me.fire("beforefeaturesadded", { features: features });
 
         //转换 features 形式
         this.features = this.toiClientFeature(features);
@@ -273,8 +273,8 @@ export var GraphThemeLayer = ThemeLayer.extend({
     isPointInPoly: function (pt, poly) {
         for (var isIn = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i) {
             ((poly[i].y <= pt.y && pt.y < poly[j].y) || (poly[j].y <= pt.y && pt.y < poly[i].y))
-            && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
-            && (isIn = !isIn);
+                && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
+                && (isIn = !isIn);
         }
         return isIn;
     },
@@ -364,7 +364,7 @@ export var GraphThemeLayer = ThemeLayer.extend({
      * @param {number} defaultValue - 当通过 weightField 获取不到权重值时，使用 defaultValue 作为权重值。
      */
     getWeightFieldValue: function (feature, weightField, defaultValue) {
-        if (typeof(defaultValue) === "undefined" || isNaN(defaultValue)) {
+        if (typeof (defaultValue) === "undefined" || isNaN(defaultValue)) {
             defaultValue = 0;
         }
         if (!feature.attributes) {
@@ -373,7 +373,7 @@ export var GraphThemeLayer = ThemeLayer.extend({
 
         var fieldValue = feature.attributes[weightField];
 
-        if (typeof(fieldValue) === "undefined" || isNaN(fieldValue)) {
+        if (typeof (fieldValue) === "undefined" || isNaN(fieldValue)) {
             fieldValue = defaultValue
         }
 
@@ -386,13 +386,13 @@ export var GraphThemeLayer = ThemeLayer.extend({
             return;
         }
         me.charts.sort(function (cs, ce) {
-            if (typeof(cs["__overlayWeight"]) === "undefined" && typeof(ce["__overlayWeight"]) === "undefined") {
+            if (typeof (cs["__overlayWeight"]) === "undefined" && typeof (ce["__overlayWeight"]) === "undefined") {
                 return 0;
-            } else if (typeof(cs["__overlayWeight"]) !== "undefined" && typeof(ce["__overlayWeight"]) === "undefined") {
+            } else if (typeof (cs["__overlayWeight"]) !== "undefined" && typeof (ce["__overlayWeight"]) === "undefined") {
                 return -1;
-            } else if (typeof(cs["__overlayWeight"]) === "undefined" && typeof(ce["__overlayWeight"]) !== "undefined") {
+            } else if (typeof (cs["__overlayWeight"]) === "undefined" && typeof (ce["__overlayWeight"]) !== "undefined") {
                 return 1;
-            } else if (typeof(cs["__overlayWeight"]) !== "undefined" && typeof(ce["__overlayWeight"]) !== "undefined") {
+            } else if (typeof (cs["__overlayWeight"]) !== "undefined" && typeof (ce["__overlayWeight"]) !== "undefined") {
                 return (parseFloat(cs["__overlayWeight"]) < parseFloat(ce["__overlayWeight"])) ? 1 : -1;
             }
             return 0;
@@ -440,11 +440,11 @@ export var GraphThemeLayer = ThemeLayer.extend({
             // 图表框
             var cbs = chart.chartBounds;
             var cBounds = [
-                {"x": cbs.left, "y": cbs.top},
-                {"x": cbs.left, "y": cbs.bottom},
-                {"x": cbs.right, "y": cbs.bottom},
-                {"x": cbs.right, "y": cbs.top},
-                {"x": cbs.left, "y": cbs.top}
+                { "x": cbs.left, "y": cbs.top },
+                { "x": cbs.left, "y": cbs.bottom },
+                { "x": cbs.right, "y": cbs.bottom },
+                { "x": cbs.right, "y": cbs.top },
+                { "x": cbs.left, "y": cbs.top }
             ];
             // 地图范围外不绘制
             if (mBounds && !me.isChartInMap(mBounds, cBounds)) {

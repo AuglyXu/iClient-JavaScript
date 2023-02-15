@@ -1,18 +1,18 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import { ComponentsViewBase } from '../ComponentsViewBase';
- import { DataServiceQueryViewModel } from './DataServiceQueryViewModel';
- import { GetFeaturesByIDsParameters } from '@supermap/iclient-common/iServer/GetFeaturesByIDsParameters';
- import { GetFeaturesBySQLParameters } from '@supermap/iclient-common/iServer/GetFeaturesBySQLParameters';
- import { GetFeaturesByBoundsParameters } from '@supermap/iclient-common/iServer/GetFeaturesByBoundsParameters';
- import { GetFeaturesByBufferParameters } from '@supermap/iclient-common/iServer/GetFeaturesByBufferParameters';
- import { GetFeaturesByGeometryParameters } from '@supermap/iclient-common/iServer/GetFeaturesByGeometryParameters';
- import { CommonContainer } from '@supermap/iclient-common/components/templates/CommonContainer';
- import { Select } from '@supermap/iclient-common/components/templates/Select';
- import { MessageBox } from '@supermap/iclient-common/components/messagebox/MessageBox';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
+import L from 'leaflet';
+import { ComponentsViewBase } from '../ComponentsViewBase';
+import { DataServiceQueryViewModel } from './DataServiceQueryViewModel';
+import { GetFeaturesByIDsParameters } from 'insight-iclient-common/iServer/GetFeaturesByIDsParameters';
+import { GetFeaturesBySQLParameters } from 'insight-iclient-common/iServer/GetFeaturesBySQLParameters';
+import { GetFeaturesByBoundsParameters } from 'insight-iclient-common/iServer/GetFeaturesByBoundsParameters';
+import { GetFeaturesByBufferParameters } from 'insight-iclient-common/iServer/GetFeaturesByBufferParameters';
+import { GetFeaturesByGeometryParameters } from 'insight-iclient-common/iServer/GetFeaturesByGeometryParameters';
+import { CommonContainer } from 'insight-iclient-common/components/templates/CommonContainer';
+import { Select } from 'insight-iclient-common/components/templates/Select';
+import { MessageBox } from 'insight-iclient-common/components/messagebox/MessageBox';
+import { Lang } from 'insight-iclient-common/lang/Lang';
 
 /**
  * @class DataServiceQueryView
@@ -36,7 +36,7 @@
 export var DataServiceQueryView = ComponentsViewBase.extend({
 
     initialize: function (dataServiceUrl, dataSetNames, options) {
-      ComponentsViewBase.prototype.initialize.apply(this, [options]);
+        ComponentsViewBase.prototype.initialize.apply(this, [options]);
 
         this.dataServiceUrl = dataServiceUrl;
         if (!dataSetNames || dataSetNames.length === 0) {
@@ -130,7 +130,7 @@ export var DataServiceQueryView = ComponentsViewBase.extend({
         this.messageBox = new MessageBox();
 
         // 组件 container
-        let container = (new CommonContainer({title: Lang.i18n('title_dataServiceQuery')})).getElement();
+        let container = (new CommonContainer({ title: Lang.i18n('title_dataServiceQuery') })).getElement();
         container.classList.add('component-servicequery__container');
         container.children[0].classList.add('component-servicequery__title');
         let componentContentContainer = container.children[1];
@@ -264,7 +264,7 @@ export var DataServiceQueryView = ComponentsViewBase.extend({
                  * @description features 获取成功时触发。
                  * @property {Object} result - 服务器返回的结果。
                  */
-                this._event.fire('getfeaturessucceeded', {'result': e.result})
+                this._event.fire('getfeaturessucceeded', { 'result': e.result })
             });
             this.viewModel.on('getfeaturesfailed', (e) => {
                 analysingContainer.style.display = 'none';
@@ -275,7 +275,7 @@ export var DataServiceQueryView = ComponentsViewBase.extend({
                  * @description features 获取失败时触发。
                  * @property {string} error - 服务器返回的错误。
                  */
-                this._event.fire('getfeaturesfailed', {'error': e.error})
+                this._event.fire('getfeaturesfailed', { 'error': e.error })
             });
             this.viewModel.getFeatures(queryParams, this.map);
         };
@@ -325,8 +325,8 @@ export var DataServiceQueryView = ComponentsViewBase.extend({
                 let boundsT = resultLayer.getBounds();
                 bounds = L.bounds([boundsT._southWest.lng, boundsT._southWest.lat], [boundsT._northEast.lng, boundsT._northEast.lat]);
                 let geo = {
-                    'leftBottom': {'x': boundsT._southWest.lng, 'y': boundsT._southWest.lat},
-                    'rightTop': {'x': boundsT._northEast.lng, 'y': boundsT._northEast.lat}
+                    'leftBottom': { 'x': boundsT._southWest.lng, 'y': boundsT._southWest.lat },
+                    'rightTop': { 'x': boundsT._northEast.lng, 'y': boundsT._northEast.lat }
                 };
                 queryRangeTextArea.value = JSON.stringify(geo);
             }

@@ -3,7 +3,7 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import { ServiceBase } from './ServiceBase';
 import '../core/Base';
-import { ThemeService as SuperMapThemeService } from '@supermap/iclient-common/iServer/ThemeService';
+import { ThemeService as SuperMapThemeService } from 'insight-iclient-common/iServer/ThemeService';
 
 /**
  * @class ThemeService
@@ -43,7 +43,7 @@ export var ThemeService = ServiceBase.extend({
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
             crossOrigin: me.options.crossOrigin,
-            headers:me.options.headers,
+            headers: me.options.headers,
             eventListeners: {
                 scope: me,
                 processCompleted: callback,

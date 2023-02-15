@@ -1,19 +1,19 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../core/Base';
- import { ServiceBase } from './ServiceBase';
- import * as Util from '../core/Util';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
- import { DataFormat } from '@supermap/iclient-common/REST';
- import { CommontypesConversion } from '../core/CommontypesConversion';
- import { GetFeaturesByIDsService } from '@supermap/iclient-common/iServer/GetFeaturesByIDsService';
- import { GetFeaturesBySQLService } from '@supermap/iclient-common/iServer/GetFeaturesBySQLService';
- import { GetFeaturesByBoundsService } from '@supermap/iclient-common/iServer/GetFeaturesByBoundsService';
- import { GetFeaturesByBufferService } from '@supermap/iclient-common/iServer/GetFeaturesByBufferService';
- import { GetFeaturesByGeometryService } from '@supermap/iclient-common/iServer/GetFeaturesByGeometryService';
- import { EditFeaturesService } from '@supermap/iclient-common/iServer/EditFeaturesService';
+import L from 'leaflet';
+import '../core/Base';
+import { ServiceBase } from './ServiceBase';
+import * as Util from '../core/Util';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { DataFormat } from 'insight-iclient-common/REST';
+import { CommontypesConversion } from '../core/CommontypesConversion';
+import { GetFeaturesByIDsService } from 'insight-iclient-common/iServer/GetFeaturesByIDsService';
+import { GetFeaturesBySQLService } from 'insight-iclient-common/iServer/GetFeaturesBySQLService';
+import { GetFeaturesByBoundsService } from 'insight-iclient-common/iServer/GetFeaturesByBoundsService';
+import { GetFeaturesByBufferService } from 'insight-iclient-common/iServer/GetFeaturesByBufferService';
+import { GetFeaturesByGeometryService } from 'insight-iclient-common/iServer/GetFeaturesByGeometryService';
+import { EditFeaturesService } from 'insight-iclient-common/iServer/EditFeaturesService';
 
 /**
  * @class FeatureService
@@ -52,8 +52,8 @@ export var FeatureService = ServiceBase.extend({
         var getFeaturesByIDsService = new GetFeaturesByIDsService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 processCompleted: callback,
                 processFailed: callback
@@ -76,8 +76,8 @@ export var FeatureService = ServiceBase.extend({
         var getFeaturesByBoundsService = new GetFeaturesByBoundsService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 processCompleted: callback,
                 processFailed: callback
@@ -99,8 +99,8 @@ export var FeatureService = ServiceBase.extend({
         var getFeatureService = new GetFeaturesByBufferService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 processCompleted: callback,
                 processFailed: callback
@@ -122,8 +122,8 @@ export var FeatureService = ServiceBase.extend({
         var getFeatureBySQLService = new GetFeaturesBySQLService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 processCompleted: callback,
                 processFailed: callback
@@ -145,8 +145,8 @@ export var FeatureService = ServiceBase.extend({
         var getFeaturesByGeometryService = new GetFeaturesByGeometryService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 processCompleted: callback,
                 processFailed: callback
@@ -177,8 +177,8 @@ export var FeatureService = ServiceBase.extend({
         var editFeatureService = new EditFeaturesService(url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
-            headers:me.options.headers,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
             eventListeners: {
                 processCompleted: callback,
                 processFailed: callback

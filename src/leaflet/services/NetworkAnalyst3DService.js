@@ -1,14 +1,14 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import { ServiceBase } from './ServiceBase';
- import '../core/Base';
- import { FacilityAnalystSinks3DService } from '@supermap/iclient-common/iServer/FacilityAnalystSinks3DService';
- import { FacilityAnalystSources3DService } from '@supermap/iclient-common/iServer/FacilityAnalystSources3DService';
- import { FacilityAnalystTraceup3DService } from '@supermap/iclient-common/iServer/FacilityAnalystTraceup3DService';
- import { FacilityAnalystTracedown3DService } from '@supermap/iclient-common/iServer/FacilityAnalystTracedown3DService';
- import { FacilityAnalystUpstream3DService } from '@supermap/iclient-common/iServer/FacilityAnalystUpstream3DService';
- 
+import { ServiceBase } from './ServiceBase';
+import '../core/Base';
+import { FacilityAnalystSinks3DService } from 'insight-iclient-common/iServer/FacilityAnalystSinks3DService';
+import { FacilityAnalystSources3DService } from 'insight-iclient-common/iServer/FacilityAnalystSources3DService';
+import { FacilityAnalystTraceup3DService } from 'insight-iclient-common/iServer/FacilityAnalystTraceup3DService';
+import { FacilityAnalystTracedown3DService } from 'insight-iclient-common/iServer/FacilityAnalystTracedown3DService';
+import { FacilityAnalystUpstream3DService } from 'insight-iclient-common/iServer/FacilityAnalystUpstream3DService';
+
 /**
  * @class NetworkAnalyst3DService
  * @deprecatedclassinstance L.supermap.networkAnalyst3DService

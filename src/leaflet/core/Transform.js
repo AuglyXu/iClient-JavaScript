@@ -2,7 +2,7 @@
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
-import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 
 /**
  * @function transform
@@ -42,7 +42,7 @@ export var transform = function (feature, sourceCRS = L.CRS.EPSG4326, targetCRS)
             feature = L.rectangle(feature).toGeoJSON();
         } else if (feature instanceof L.Bounds) {
             feature = L.rectangle([[feature.getTopLeft().x, feature.getTopLeft().y],
-                [feature.getBottomRight().x, feature.getBottomRight().y]]).toGeoJSON();
+            [feature.getBottomRight().x, feature.getBottomRight().y]]).toGeoJSON();
         } else {
             throw new Error("This tool only supports data conversion in geojson format or Vector Layers of Leaflet.")
         }
@@ -150,7 +150,7 @@ export var transform = function (feature, sourceCRS = L.CRS.EPSG4326, targetCRS)
 
     function _transformCoordinates(coordinates) {
         //判断code 是投影坐标还是地理坐标
-        var point = sourceCRS.unproject({x: coordinates[0], y: coordinates[1]});
+        var point = sourceCRS.unproject({ x: coordinates[0], y: coordinates[1] });
         const transform = targetCRS.project(point);
         return [transform.x, transform.y];
     }

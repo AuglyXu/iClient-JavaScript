@@ -1,10 +1,10 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../../core/Base';
- import { FetchRequest } from '@supermap/iclient-common/util/FetchRequest';
- import { GeoJsonLayersDataModel } from '../commonmodels/GeoJsonLayersModel';
+import L from 'leaflet';
+import '../../core/Base';
+import { FetchRequest } from 'insight-iclient-common/util/FetchRequest';
+import { GeoJsonLayersDataModel } from '../commonmodels/GeoJsonLayersModel';
 
 /**
  * @class SearchViewModel
@@ -222,12 +222,12 @@ export var SearchViewModel = L.Evented.extend({
         return features;
     },
 
-     /**
-     * @function SearchViewModel.prototype._getSearchUrl
-     * @description 获取地理编码查询地址。
-     * @param {Object} geoCodeParam - 地理编码查询参数。
-     * @private
-     */
+    /**
+    * @function SearchViewModel.prototype._getSearchUrl
+    * @description 获取地理编码查询地址。
+    * @param {Object} geoCodeParam - 地理编码查询参数。
+    * @private
+    */
     _getSearchUrl(geoCodeParam) {
         let url = this.options.cityGeoCodingConfig.addressUrl + `.json?keywords=${geoCodeParam.keyWords}&city=${geoCodeParam.city}&pageSize=${geoCodeParam.pageSize}&pageNum=${geoCodeParam.pageNum}&key=${this.options.cityGeoCodingConfig.key}`;
         return url;

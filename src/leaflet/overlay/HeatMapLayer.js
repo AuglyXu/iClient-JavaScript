@@ -1,15 +1,15 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
- import { LonLat } from '@supermap/iclient-common/commontypes/LonLat';
- import { GeoJSON as GeoJSONFormat } from '@supermap/iclient-common/format/GeoJSON';
- import { ServerFeature } from '@supermap/iclient-common/iServer/ServerFeature';
- import { Vector } from '@supermap/iclient-common/commontypes/Vector';
- import { Point as GeometryPoint } from '@supermap/iclient-common/commontypes/geometry/Point';
- import { GeoText } from '@supermap/iclient-common/commontypes/geometry/GeoText';
- import Attributions from '../core/Attributions';
+import L from 'leaflet';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { LonLat } from 'insight-iclient-common/commontypes/LonLat';
+import { GeoJSON as GeoJSONFormat } from 'insight-iclient-common/format/GeoJSON';
+import { ServerFeature } from 'insight-iclient-common/iServer/ServerFeature';
+import { Vector } from 'insight-iclient-common/commontypes/Vector';
+import { Point as GeometryPoint } from 'insight-iclient-common/commontypes/geometry/Point';
+import { GeoText } from 'insight-iclient-common/commontypes/geometry/GeoText';
+import Attributions from '../core/Attributions';
 
 /**
  * @class HeatMapFeature
@@ -484,7 +484,7 @@ export var HeatMapLayer = L.Layer.extend({
          * @property {Array.<FeatureVector>} features  - 事件对象。
          * @property {boolean} succeed  - 删除是否成功，false 为失败，true 为成功。
          */
-        this._map.fire("featuresremoved", {features: heatPointsFailedRemoved, succeed: succeed});
+        this._map.fire("featuresremoved", { features: heatPointsFailedRemoved, succeed: succeed });
         this.refresh();
     },
 
@@ -531,7 +531,7 @@ export var HeatMapLayer = L.Layer.extend({
              * @property {HeatMapLayer} layer - 图层。
              * @property {string} property - 改变的图层属性。
              */
-            me._map.fire("changelayer", {layer: me, property: "opacity"});
+            me._map.fire("changelayer", { layer: me, property: "opacity" });
         }
     },
 

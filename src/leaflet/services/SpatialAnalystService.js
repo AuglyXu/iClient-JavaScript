@@ -6,21 +6,21 @@ import '../core/Base';
 import { ServiceBase } from './ServiceBase';
 import * as Util from '../core/Util';
 import { CommontypesConversion } from '../core/CommontypesConversion';
-import { DataFormat } from '@supermap/iclient-common/REST';
-import { AreaSolarRadiationService } from '@supermap/iclient-common/iServer/AreaSolarRadiationService';
-import { BufferAnalystService } from '@supermap/iclient-common/iServer/BufferAnalystService';
-import { DensityAnalystService } from '@supermap/iclient-common/iServer/DensityAnalystService';
-import { GenerateSpatialDataService } from '@supermap/iclient-common/iServer/GenerateSpatialDataService';
-import { GeoRelationAnalystService } from '@supermap/iclient-common/iServer/GeoRelationAnalystService';
-import { InterpolationAnalystService } from '@supermap/iclient-common/iServer/InterpolationAnalystService';
-import { MathExpressionAnalysisService } from '@supermap/iclient-common/iServer/MathExpressionAnalysisService';
-import { OverlayAnalystService } from '@supermap/iclient-common/iServer/OverlayAnalystService';
-import { RouteCalculateMeasureService } from '@supermap/iclient-common/iServer/RouteCalculateMeasureService';
-import { RouteLocatorService } from '@supermap/iclient-common/iServer/RouteLocatorService';
-import { SurfaceAnalystService } from '@supermap/iclient-common/iServer/SurfaceAnalystService';
-import { TerrainCurvatureCalculationService } from '@supermap/iclient-common/iServer/TerrainCurvatureCalculationService';
-import { ThiessenAnalystService } from '@supermap/iclient-common/iServer/ThiessenAnalystService';
-import { GeometryBatchAnalystService } from '@supermap/iclient-common/iServer/GeometryBatchAnalystService';
+import { DataFormat } from 'insight-iclient-common/REST';
+import { AreaSolarRadiationService } from 'insight-iclient-common/iServer/AreaSolarRadiationService';
+import { BufferAnalystService } from 'insight-iclient-common/iServer/BufferAnalystService';
+import { DensityAnalystService } from 'insight-iclient-common/iServer/DensityAnalystService';
+import { GenerateSpatialDataService } from 'insight-iclient-common/iServer/GenerateSpatialDataService';
+import { GeoRelationAnalystService } from 'insight-iclient-common/iServer/GeoRelationAnalystService';
+import { InterpolationAnalystService } from 'insight-iclient-common/iServer/InterpolationAnalystService';
+import { MathExpressionAnalysisService } from 'insight-iclient-common/iServer/MathExpressionAnalysisService';
+import { OverlayAnalystService } from 'insight-iclient-common/iServer/OverlayAnalystService';
+import { RouteCalculateMeasureService } from 'insight-iclient-common/iServer/RouteCalculateMeasureService';
+import { RouteLocatorService } from 'insight-iclient-common/iServer/RouteLocatorService';
+import { SurfaceAnalystService } from 'insight-iclient-common/iServer/SurfaceAnalystService';
+import { TerrainCurvatureCalculationService } from 'insight-iclient-common/iServer/TerrainCurvatureCalculationService';
+import { ThiessenAnalystService } from 'insight-iclient-common/iServer/ThiessenAnalystService';
+import { GeometryBatchAnalystService } from 'insight-iclient-common/iServer/GeometryBatchAnalystService';
 
 /**
  * @class SpatialAnalystService
@@ -42,7 +42,7 @@ import { GeometryBatchAnalystService } from '@supermap/iclient-common/iServer/Ge
  * @usage
  */
 export var SpatialAnalystService = ServiceBase.extend({
-    initialize: function(url, options) {
+    initialize: function (url, options) {
         ServiceBase.prototype.initialize.call(this, url, options);
     },
     /**
@@ -52,7 +52,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    getAreaSolarRadiationResult: function(params, callback, resultFormat) {
+    getAreaSolarRadiationResult: function (params, callback, resultFormat) {
         var me = this;
         var areaSolarRadiationService = new AreaSolarRadiationService(me.url, {
             proxy: me.options.proxy,
@@ -77,7 +77,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    bufferAnalysis: function(params, callback, resultFormat) {
+    bufferAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var bufferAnalystService = new BufferAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -102,7 +102,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    densityAnalysis: function(params, callback, resultFormat) {
+    densityAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var densityAnalystService = new DensityAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -127,7 +127,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    generateSpatialData: function(params, callback, resultFormat) {
+    generateSpatialData: function (params, callback, resultFormat) {
         var me = this;
         var generateSpatialDataService = new GenerateSpatialDataService(me.url, {
             proxy: me.options.proxy,
@@ -152,7 +152,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    geoRelationAnalysis: function(params, callback, resultFormat) {
+    geoRelationAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var geoRelationAnalystService = new GeoRelationAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -177,7 +177,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    interpolationAnalysis: function(params, callback, resultFormat) {
+    interpolationAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var interpolationAnalystService = new InterpolationAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -202,7 +202,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    mathExpressionAnalysis: function(params, callback, resultFormat) {
+    mathExpressionAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var mathExpressionAnalysisService = new MathExpressionAnalysisService(me.url, {
             proxy: me.options.proxy,
@@ -227,7 +227,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    overlayAnalysis: function(params, callback, resultFormat) {
+    overlayAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var overlayAnalystService = new OverlayAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -252,7 +252,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    routeCalculateMeasure: function(params, callback, resultFormat) {
+    routeCalculateMeasure: function (params, callback, resultFormat) {
         var me = this;
         var routeCalculateMeasureService = new RouteCalculateMeasureService(me.url, {
             proxy: me.options.proxy,
@@ -277,7 +277,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    routeLocate: function(params, callback, resultFormat) {
+    routeLocate: function (params, callback, resultFormat) {
         var me = this;
         var routeLocatorService = new RouteLocatorService(me.url, {
             proxy: me.options.proxy,
@@ -302,7 +302,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    surfaceAnalysis: function(params, callback, resultFormat) {
+    surfaceAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var surfaceAnalystService = new SurfaceAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -327,7 +327,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    terrainCurvatureCalculate: function(params, callback, resultFormat) {
+    terrainCurvatureCalculate: function (params, callback, resultFormat) {
         var me = this;
         var terrainCurvatureCalculationService = new TerrainCurvatureCalculationService(me.url, {
             proxy: me.options.proxy,
@@ -352,7 +352,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    thiessenAnalysis: function(params, callback, resultFormat) {
+    thiessenAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var thiessenAnalystService = new ThiessenAnalystService(me.url, {
             proxy: me.options.proxy,
@@ -384,7 +384,7 @@ export var SpatialAnalystService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      * @param {DataFormat} [resultFormat=DataFormat.GEOJSON] - 返回结果类型。
      */
-    geometrybatchAnalysis: function(params, callback, resultFormat) {
+    geometrybatchAnalysis: function (params, callback, resultFormat) {
         var me = this;
         var geometryBatchAnalystService = new GeometryBatchAnalystService(me.url, {
             eventListeners: {
@@ -408,7 +408,7 @@ export var SpatialAnalystService = ServiceBase.extend({
         geometryBatchAnalystService.processAsync(analystParameters);
     },
 
-    _processParams: function(params) {
+    _processParams: function (params) {
         if (!params) {
             return {};
         }
@@ -499,7 +499,7 @@ export var SpatialAnalystService = ServiceBase.extend({
             }
         }
         if (params.operateRegions && L.Util.isArray(params.operateRegions)) {
-            params.operateRegions.map(function(geometry, key) {
+            params.operateRegions.map(function (geometry, key) {
                 params.operateRegions[key] = Util.toSuperMapGeometry(geometry);
                 return params.operateRegions[key];
             });
@@ -513,11 +513,11 @@ export var SpatialAnalystService = ServiceBase.extend({
         return params;
     },
 
-    _processFormat: function(resultFormat) {
+    _processFormat: function (resultFormat) {
         return resultFormat ? resultFormat : DataFormat.GEOJSON;
     }
 });
-export var spatialAnalystService = function(url, options) {
+export var spatialAnalystService = function (url, options) {
     return new SpatialAnalystService(url, options);
 };
 

@@ -4,12 +4,12 @@
 
 import L from "leaflet";
 import '../../core/Base';
-import { featureService as FeatureService} from '../../services/FeatureService';
-import { GetFeaturesByIDsParameters } from '@supermap/iclient-common/iServer/GetFeaturesByIDsParameters';
-import { GetFeaturesBySQLParameters } from '@supermap/iclient-common/iServer/GetFeaturesBySQLParameters';
-import { GetFeaturesByBoundsParameters } from '@supermap/iclient-common/iServer/GetFeaturesByBoundsParameters';
-import { GetFeaturesByBufferParameters } from '@supermap/iclient-common/iServer/GetFeaturesByBufferParameters';
-import { GetFeaturesByGeometryParameters } from '@supermap/iclient-common/iServer/GetFeaturesByGeometryParameters';
+import { featureService as FeatureService } from '../../services/FeatureService';
+import { GetFeaturesByIDsParameters } from 'insight-iclient-common/iServer/GetFeaturesByIDsParameters';
+import { GetFeaturesBySQLParameters } from 'insight-iclient-common/iServer/GetFeaturesBySQLParameters';
+import { GetFeaturesByBoundsParameters } from 'insight-iclient-common/iServer/GetFeaturesByBoundsParameters';
+import { GetFeaturesByBufferParameters } from 'insight-iclient-common/iServer/GetFeaturesByBufferParameters';
+import { GetFeaturesByGeometryParameters } from 'insight-iclient-common/iServer/GetFeaturesByGeometryParameters';
 
 /**
  * @class DataServiceQueryViewModel
@@ -86,7 +86,7 @@ export class DataServiceQueryViewModel extends L.Evented {
                 layer.bindPopup("ID: " + feature.properties.SMID);
             },
             pointToLayer: function (geoJsonPoint, latLng) {
-                return L.circleMarker(latLng, { radius: 6})
+                return L.circleMarker(latLng, { radius: 6 })
             }
         }).addTo(map);
         this.resultLayers.push(resultLayer);

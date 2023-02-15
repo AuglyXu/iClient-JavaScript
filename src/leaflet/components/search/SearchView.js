@@ -1,16 +1,16 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import { ComponentsViewBase } from '../ComponentsViewBase';
- import { config } from './CityConfig';
- import { NavTabsPage } from '@supermap/iclient-common/components/templates/NavTabsPage';
- import { CityTabsPage } from '@supermap/iclient-common/components/templates/CityTabsPage';
- import { PaginationContainer } from '@supermap/iclient-common/components/templates/PaginationContainer';
- import { AttributesPopContainer } from '@supermap/iclient-common/components/templates/AttributesPopContainer';
- import { MessageBox } from '@supermap/iclient-common/components/messagebox/MessageBox';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
- import { SearchViewModel } from './SearchViewModel';
+import L from 'leaflet';
+import { ComponentsViewBase } from '../ComponentsViewBase';
+import { config } from './CityConfig';
+import { NavTabsPage } from 'insight-iclient-common/components/templates/NavTabsPage';
+import { CityTabsPage } from 'insight-iclient-common/components/templates/CityTabsPage';
+import { PaginationContainer } from 'insight-iclient-common/components/templates/PaginationContainer';
+import { AttributesPopContainer } from 'insight-iclient-common/components/templates/AttributesPopContainer';
+import { MessageBox } from 'insight-iclient-common/components/messagebox/MessageBox';
+import { Lang } from 'insight-iclient-common/lang/Lang';
+import { SearchViewModel } from './SearchViewModel';
 
 /**
  * @class SearchView
@@ -50,7 +50,7 @@ export var SearchView = ComponentsViewBase.extend({
     },
 
     initialize(options) {
-      ComponentsViewBase.prototype.initialize.apply(this, [options]);
+        ComponentsViewBase.prototype.initialize.apply(this, [options]);
         //当前选中查询的图层名：
         this.currentSearchLayerName = "";
         this.isSearchLayer = false;

@@ -3,19 +3,19 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
 import '../core/Base';
-import {ServiceBase} from './ServiceBase';
-import { DataFormat } from '@supermap/iclient-common/REST';
-import { BurstPipelineAnalystService } from '@supermap/iclient-common/iServer/BurstPipelineAnalystService';
-import { ComputeWeightMatrixService } from '@supermap/iclient-common/iServer/ComputeWeightMatrixService';
-import { FacilityAnalystStreamService } from '@supermap/iclient-common/iServer/FacilityAnalystStreamService';
-import { FindClosestFacilitiesService } from '@supermap/iclient-common/iServer/FindClosestFacilitiesService';
-import { FindLocationService } from '@supermap/iclient-common/iServer/FindLocationService';
-import { FindMTSPPathsService } from '@supermap/iclient-common/iServer/FindMTSPPathsService';
-import { FindPathService } from '@supermap/iclient-common/iServer/FindPathService';
-import { FindServiceAreasService } from '@supermap/iclient-common/iServer/FindServiceAreasService';
-import { FindTSPPathsService } from '@supermap/iclient-common/iServer/FindTSPPathsService';
-import { UpdateEdgeWeightService } from '@supermap/iclient-common/iServer/UpdateEdgeWeightService';
-import { UpdateTurnNodeWeightService } from '@supermap/iclient-common/iServer/UpdateTurnNodeWeightService';
+import { ServiceBase } from './ServiceBase';
+import { DataFormat } from 'insight-iclient-common/REST';
+import { BurstPipelineAnalystService } from 'insight-iclient-common/iServer/BurstPipelineAnalystService';
+import { ComputeWeightMatrixService } from 'insight-iclient-common/iServer/ComputeWeightMatrixService';
+import { FacilityAnalystStreamService } from 'insight-iclient-common/iServer/FacilityAnalystStreamService';
+import { FindClosestFacilitiesService } from 'insight-iclient-common/iServer/FindClosestFacilitiesService';
+import { FindLocationService } from 'insight-iclient-common/iServer/FindLocationService';
+import { FindMTSPPathsService } from 'insight-iclient-common/iServer/FindMTSPPathsService';
+import { FindPathService } from 'insight-iclient-common/iServer/FindPathService';
+import { FindServiceAreasService } from 'insight-iclient-common/iServer/FindServiceAreasService';
+import { FindTSPPathsService } from 'insight-iclient-common/iServer/FindTSPPathsService';
+import { UpdateEdgeWeightService } from 'insight-iclient-common/iServer/UpdateEdgeWeightService';
+import { UpdateTurnNodeWeightService } from 'insight-iclient-common/iServer/UpdateTurnNodeWeightService';
 
 /**
  * @class NetworkAnalystService
@@ -307,25 +307,25 @@ export var NetworkAnalystService = ServiceBase.extend({
 
         if (params.centers && L.Util.isArray(params.centers)) {
             params.centers.map(function (point, key) {
-                params.centers[key] = (point instanceof L.LatLng) ? {x: point.lng, y: point.lat} : point;
+                params.centers[key] = (point instanceof L.LatLng) ? { x: point.lng, y: point.lat } : point;
                 return params.centers[key];
             });
         }
 
         if (params.nodes && L.Util.isArray(params.nodes)) {
             params.nodes.map(function (point, key) {
-                params.nodes[key] = (point instanceof L.LatLng) ? {x: point.lng, y: point.lat} : point;
+                params.nodes[key] = (point instanceof L.LatLng) ? { x: point.lng, y: point.lat } : point;
                 return params.nodes[key];
             });
         }
 
         if (params.event && params.event instanceof L.LatLng) {
-            params.event = {x: params.event.lng, y: params.event.lat};
+            params.event = { x: params.event.lng, y: params.event.lat };
         }
 
         if (params.facilities && L.Util.isArray(params.facilities)) {
             params.facilities.map(function (point, key) {
-                params.facilities[key] = (point instanceof L.LatLng) ? {x: point.lng, y: point.lat} : point;
+                params.facilities[key] = (point instanceof L.LatLng) ? { x: point.lng, y: point.lat } : point;
                 return params.facilities[key];
             });
         }

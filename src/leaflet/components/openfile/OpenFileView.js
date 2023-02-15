@@ -1,11 +1,11 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import { ComponentsViewBase } from '../ComponentsViewBase';
- import { OpenFileViewModel } from './OpenFileViewModel';
- import { MessageBox } from '@supermap/iclient-common/components/messagebox/MessageBox';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
+import L from 'leaflet';
+import { ComponentsViewBase } from '../ComponentsViewBase';
+import { OpenFileViewModel } from './OpenFileViewModel';
+import { MessageBox } from 'insight-iclient-common/components/messagebox/MessageBox';
+import { Lang } from 'insight-iclient-common/lang/Lang';
 
 /**
  * @class OpenFileView
@@ -30,7 +30,7 @@ export var OpenFileView = ComponentsViewBase.extend({
     },
 
     initialize(options) {
-      ComponentsViewBase.prototype.initialize.apply(this, [options]);
+        ComponentsViewBase.prototype.initialize.apply(this, [options]);
         //初始化 ViewModel:
         this.viewModel = new OpenFileViewModel();
     },
@@ -87,11 +87,11 @@ export var OpenFileView = ComponentsViewBase.extend({
         });
         this.viewModel.on("openfilefailed", (e) => {
             this.messageBox.showView(e.message, e.messageType);
-             /**
-             * @event OpenFileView#openfilefailed
-             * @description 打开文件失败。
-             * @property {Object} e - 事件对象。
-             */
+            /**
+            * @event OpenFileView#openfilefailed
+            * @description 打开文件失败。
+            * @property {Object} e - 事件对象。
+            */
             this._event.fire("openfilefailed", e);
         });
         this.viewModel.on("readdatafail", (e) => {

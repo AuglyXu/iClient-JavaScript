@@ -1,11 +1,11 @@
-    /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
- * This program are made available under the terms of the Apache License, Version 2.0
- * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import '../core/Base';
- import { ServiceBase } from './ServiceBase';
- import { DatasourceService as CommonDatasourceService } from '@supermap/iclient-common/iServer/DatasourceService';
- import { SetDatasourceParameters } from '@supermap/iclient-common/iServer/SetDatasourceParameters';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+/* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
+* This program are made available under the terms of the Apache License, Version 2.0
+* which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
+import '../core/Base';
+import { ServiceBase } from './ServiceBase';
+import { DatasourceService as CommonDatasourceService } from 'insight-iclient-common/iServer/DatasourceService';
+import { SetDatasourceParameters } from 'insight-iclient-common/iServer/SetDatasourceParameters';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 /**
  * @class  DatasourceService
  * @deprecatedclassinstance L.supermap.datasourceService
@@ -22,7 +22,7 @@
  */
 export var DatasourceService = ServiceBase.extend({
 
-    initialize: function (url,options) {
+    initialize: function (url, options) {
         ServiceBase.prototype.initialize.call(this, url, options);
     },
 
@@ -69,7 +69,7 @@ export var DatasourceService = ServiceBase.extend({
         const datasourceService = new CommonDatasourceService(me.url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,
-            crossOrigin:me.options.crossOrigin,
+            crossOrigin: me.options.crossOrigin,
             headers: me.options.headers,
             eventListeners: {
                 scope: me,
@@ -90,17 +90,17 @@ export var DatasourceService = ServiceBase.extend({
      * @param {SetDatasourceParameters} params - 数据源信息设置参数类。
      * @param {RequestCallback} callback - 回调函数。
      */
-    setDatasource: function(params, callback) {
+    setDatasource: function (params, callback) {
         if (!(params instanceof SetDatasourceParameters)) {
             return;
         }
         const datasourceParams = {
-            description: params.description ,
+            description: params.description,
             coordUnit: params.coordUnit,
             distanceUnit: params.distanceUnit
         };
         const me = this;
-        const url = CommonUtil.urlPathAppend(me.url,`datasources/name/${params.datasourceName}`);
+        const url = CommonUtil.urlPathAppend(me.url, `datasources/name/${params.datasourceName}`);
         const datasourceService = new CommonDatasourceService(url, {
             proxy: me.options.proxy,
             withCredentials: me.options.withCredentials,

@@ -3,14 +3,14 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import { ServiceBase } from './ServiceBase';
 import '../core/Base';
-import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
-import { GetLayersInfoService } from '@supermap/iclient-common/iServer/GetLayersInfoService';
-import { SetLayerInfoService } from '@supermap/iclient-common/iServer/SetLayerInfoService';
-import { SetLayersInfoService } from '@supermap/iclient-common/iServer/SetLayersInfoService';
-import { SetLayerStatusService } from '@supermap/iclient-common/iServer/SetLayerStatusService';
-import { SetLayerStatusParameters } from '@supermap/iclient-common/iServer/SetLayerStatusParameters';
-import { SetLayerInfoParameters } from '@supermap/iclient-common/iServer/SetLayerInfoParameters';
-import { SetLayersInfoParameters } from '@supermap/iclient-common/iServer/SetLayersInfoParameters';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { GetLayersInfoService } from 'insight-iclient-common/iServer/GetLayersInfoService';
+import { SetLayerInfoService } from 'insight-iclient-common/iServer/SetLayerInfoService';
+import { SetLayersInfoService } from 'insight-iclient-common/iServer/SetLayersInfoService';
+import { SetLayerStatusService } from 'insight-iclient-common/iServer/SetLayerStatusService';
+import { SetLayerStatusParameters } from 'insight-iclient-common/iServer/SetLayerStatusParameters';
+import { SetLayerInfoParameters } from 'insight-iclient-common/iServer/SetLayerInfoParameters';
+import { SetLayersInfoParameters } from 'insight-iclient-common/iServer/SetLayersInfoParameters';
 
 
 /**
@@ -74,7 +74,7 @@ export var LayerInfoService = ServiceBase.extend({
         if (!resourceID || !tempLayerName) {
             return;
         }
-        var url = CommonUtil.urlPathAppend(me.url,`tempLayersSet/${resourceID}/${tempLayerName}`);
+        var url = CommonUtil.urlPathAppend(me.url, `tempLayersSet/${resourceID}/${tempLayerName}`);
 
         var setLayerInfoService = new SetLayerInfoService(url, {
             proxy: me.options.proxy,

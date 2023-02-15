@@ -1,13 +1,13 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import '../core/Base';
- import { Util } from '@supermap/iclient-common/commontypes/Util';
- import { GeoFeatureThemeLayer } from './theme/GeoFeatureThemeLayer';
- import { GeoText } from '@supermap/iclient-common/commontypes/geometry/GeoText';
- import { Bounds } from '@supermap/iclient-common/commontypes/Bounds';
- import { Vector as FeatureVector } from '@supermap/iclient-common/commontypes/Vector';
+import L from 'leaflet';
+import '../core/Base';
+import { Util } from 'insight-iclient-common/commontypes/Util';
+import { GeoFeatureThemeLayer } from './theme/GeoFeatureThemeLayer';
+import { GeoText } from 'insight-iclient-common/commontypes/geometry/GeoText';
+import { Bounds } from 'insight-iclient-common/commontypes/Bounds';
+import { Vector as FeatureVector } from 'insight-iclient-common/commontypes/Vector';
 /**
  * @class LabelThemeLayer
  * @deprecatedclassinstance L.supermap.labelThemeLayer
@@ -141,11 +141,11 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
         GeoFeatureThemeLayer.prototype.redrawThematicFeatures.call(this, bounds);
     },
 
-     /**
-     * @function LabelThemeLayer.prototype.removeFeatures
-     * @description 从专题图中删除 feature。这个函数删除所有传递进来的矢量要素。参数中的 features 数组中的每一项，必须是已经添加到当前图层中的 feature。
-     * @param {(Array.<FeatureVector>|FeatureVector|Function)} features - 要删除的要素或用于条件删除的回调函数。
-     */
+    /**
+    * @function LabelThemeLayer.prototype.removeFeatures
+    * @description 从专题图中删除 feature。这个函数删除所有传递进来的矢量要素。参数中的 features 数组中的每一项，必须是已经添加到当前图层中的 feature。
+    * @param {(Array.<FeatureVector>|FeatureVector|Function)} features - 要删除的要素或用于条件删除的回调函数。
+    */
     removeFeatures: function (features) { // eslint-disable-line no-unused-vars
         this.labelFeatures = [];
         GeoFeatureThemeLayer.prototype.removeFeatures.call(this, features);
@@ -503,25 +503,25 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
         var boundsQuad = [];
         if ((feature.style.labelRotation % 180) == 0) {
             boundsQuad = [{
-                    "x": labB.left,
-                    "y": labB.top
-                },
-                {
-                    "x": labB.right,
-                    "y": labB.top
-                },
-                {
-                    "x": labB.right,
-                    "y": labB.bottom
-                },
-                {
-                    "x": labB.left,
-                    "y": labB.bottom
-                },
-                {
-                    "x": labB.left,
-                    "y": labB.top
-                }
+                "x": labB.left,
+                "y": labB.top
+            },
+            {
+                "x": labB.right,
+                "y": labB.top
+            },
+            {
+                "x": labB.right,
+                "y": labB.bottom
+            },
+            {
+                "x": labB.left,
+                "y": labB.bottom
+            },
+            {
+                "x": labB.left,
+                "y": labB.top
+            }
             ];
         } else {
             boundsQuad = this.rotationBounds(labB, loc, feature.style.labelRotation);
@@ -599,25 +599,25 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
         var boundsQuad = [];
         if ((style.labelRotation % 180) == 0) {
             boundsQuad = [{
-                    "x": labB.left,
-                    "y": labB.top
-                },
-                {
-                    "x": labB.right,
-                    "y": labB.top
-                },
-                {
-                    "x": labB.right,
-                    "y": labB.bottom
-                },
-                {
-                    "x": labB.left,
-                    "y": labB.bottom
-                },
-                {
-                    "x": labB.left,
-                    "y": labB.top
-                }
+                "x": labB.left,
+                "y": labB.top
+            },
+            {
+                "x": labB.right,
+                "y": labB.top
+            },
+            {
+                "x": labB.right,
+                "y": labB.bottom
+            },
+            {
+                "x": labB.left,
+                "y": labB.bottom
+            },
+            {
+                "x": labB.left,
+                "y": labB.top
+            }
             ];
         } else {
             boundsQuad = this.rotationBounds(labB, loc, style.labelRotation);
@@ -635,11 +635,11 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
      */
     getLabelInfo: function (location, style) {
         var LABEL_ALIGN = {
-                "l": "left",
-                "r": "right",
-                "t": "top",
-                "b": "bottom"
-            },
+            "l": "left",
+            "r": "right",
+            "t": "top",
+            "b": "bottom"
+        },
             LABEL_FACTOR = {
                 "l": 0,
                 "r": -1,
@@ -671,9 +671,9 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
         ctx.globalAlpha = style.fontOpacity || 1.0;
         var fontStyle = [style.fontStyle ? style.fontStyle : "normal",
             "normal",
-            style.fontWeight ? style.fontWeight : "normal",
-            style.fontSize ? style.fontSize : "1em",
-            style.fontFamily ? style.fontFamily : "sans-serif"
+        style.fontWeight ? style.fontWeight : "normal",
+        style.fontSize ? style.fontSize : "1em",
+        style.fontFamily ? style.fontFamily : "sans-serif"
         ].join(" ");
         var labelRows = style.label.split('\n');
         var numRows = labelRows.length;
@@ -809,25 +809,25 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
 
         //将bound序列化为点数组形式
         var bounddQuad = [{
-                "x": bounds.left,
-                "y": bounds.top
-            },
-            {
-                "x": bounds.right,
-                "y": bounds.top
-            },
-            {
-                "x": bounds.right,
-                "y": bounds.bottom
-            },
-            {
-                "x": bounds.left,
-                "y": bounds.bottom
-            },
-            {
-                "x": bounds.left,
-                "y": bounds.top
-            }
+            "x": bounds.left,
+            "y": bounds.top
+        },
+        {
+            "x": bounds.right,
+            "y": bounds.top
+        },
+        {
+            "x": bounds.right,
+            "y": bounds.bottom
+        },
+        {
+            "x": bounds.left,
+            "y": bounds.bottom
+        },
+        {
+            "x": bounds.left,
+            "y": bounds.top
+        }
         ];
 
         var isIntersection = false,
@@ -967,8 +967,8 @@ export var LabelThemeLayer = GeoFeatureThemeLayer.extend({
     isPointInPoly: function (pt, poly) {
         for (var isIn = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i) {
             ((poly[i].y <= pt.y && pt.y < poly[j].y) || (poly[j].y <= pt.y && pt.y < poly[i].y)) &&
-            (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x) &&
-            (isIn = !isIn);
+                (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x) &&
+                (isIn = !isIn);
         }
         return isIn;
     }

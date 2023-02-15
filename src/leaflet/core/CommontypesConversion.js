@@ -1,12 +1,12 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import './Base';
- import { Bounds } from '@supermap/iclient-common/commontypes/Bounds';
+import L from 'leaflet';
+import './Base';
+import { Bounds } from 'insight-iclient-common/commontypes/Bounds';
 
- const isArray = function(obj) {
-  return Object.prototype.toString.call(obj) == '[object Array]';
+const isArray = function (obj) {
+    return Object.prototype.toString.call(obj) == '[object Array]';
 }
 /**
  * @class CommontypesConversion
@@ -67,7 +67,7 @@ export const CommontypesConversion = {
      * @param {Array} points - Region 各个节点数组。
      * @returns processing 服务裁剪、查询分析的分析参数。
      */
-      toProcessingParam(points) {
+    toProcessingParam(points) {
         var geometryParam = {};
         if (points.length < 1) {
             geometryParam = "";

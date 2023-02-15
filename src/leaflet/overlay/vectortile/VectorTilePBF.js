@@ -3,9 +3,9 @@
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import L from "leaflet";
 import Pbf from 'pbf';
-import {VectorTile} from '@mapbox/vector-tile';
-import {VectorFeatureType} from './VectorFeatureType';
-import { FetchRequest } from '@supermap/iclient-common/util/FetchRequest';
+import { VectorTile } from '@mapbox/vector-tile';
+import { VectorFeatureType } from './VectorFeatureType';
+import { FetchRequest } from 'insight-iclient-common/util/FetchRequest';
 
 /**
  * @class VectorTilePBF
@@ -32,7 +32,7 @@ export var VectorTilePBF = L.Class.extend({
             timeout: 10000
         }).then(function (response) {
             if (!response.ok) {
-                return {layers: []};
+                return { layers: [] };
             }
             return response.blob().then(function (blob) {
                 var reader = new FileReader();
@@ -57,7 +57,7 @@ export var VectorTilePBF = L.Class.extend({
                 var feat = vectorTile.layers[layerName].feature(i);
                 feat.geometry = feat.loadGeometry();
                 feat.layerName = layerName;
-                feat.properties = {attributes: L.Util.extend({}, feat.properties), id: feat.id};
+                feat.properties = { attributes: L.Util.extend({}, feat.properties), id: feat.id };
                 switch (feat.type) {
                     case 1:
                         feat.type = VectorFeatureType.POINT;

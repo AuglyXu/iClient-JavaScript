@@ -2,8 +2,8 @@
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
 import '../core/Base';
-import {GeoFeatureThemeLayer} from './theme/GeoFeatureThemeLayer';
-import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
+import { GeoFeatureThemeLayer } from './theme/GeoFeatureThemeLayer';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
 
 /**
  * @class RangeThemeLayer
@@ -29,16 +29,16 @@ import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
  * @usage
  */
 export var RangeThemeLayer = GeoFeatureThemeLayer.extend({
-    
+
     /** 
      * @member {Object} RangeThemeLayer.prototype.style
      * @description 专题图样式。
      */
-    
-     /** 
-     * @member {Object} RangeThemeLayer.prototype.styleGroups
-     * @description 各专题类型样式组。
-     */
+
+    /** 
+    * @member {Object} RangeThemeLayer.prototype.styleGroups
+    * @description 各专题类型样式组。
+    */
 
     /** 
      * @member {Object} RangeThemeLayer.prototype.highlightStyle
@@ -97,7 +97,7 @@ export var RangeThemeLayer = GeoFeatureThemeLayer.extend({
         //判断属性值是否属于styleGroups的某一个范围，以便对获取分组 style
         if (isSfInAttributes) {
             for (var i = 0, len = groups.length; i < len; i++) {
-				var isContianed = i === len-1 ? ((attribute >= groups[i].start) && (attribute <= groups[i].end)) : ((attribute >= groups[i].start) && (attribute < groups[i].end));
+                var isContianed = i === len - 1 ? ((attribute >= groups[i].start) && (attribute <= groups[i].end)) : ((attribute >= groups[i].start) && (attribute < groups[i].end));
                 if (isContianed) {
                     var sty1 = groups[i].style;
                     style = CommonUtil.copyAttributesWithClip(style, sty1);

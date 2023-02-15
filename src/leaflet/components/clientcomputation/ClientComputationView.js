@@ -1,14 +1,14 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import { ComponentsViewBase } from '../ComponentsViewBase';
- import { ClientComputationViewModel } from './ClientComputationViewModel';
- import { CommonContainer } from '@supermap/iclient-common/components/templates/CommonContainer';
- import { DropDownBox } from '@supermap/iclient-common/components/templates/DropDownBox';
- import { Select } from '@supermap/iclient-common/components/templates/Select';
- import { MessageBox } from '@supermap/iclient-common/components/messagebox/MessageBox';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
+import L from 'leaflet';
+import { ComponentsViewBase } from '../ComponentsViewBase';
+import { ClientComputationViewModel } from './ClientComputationViewModel';
+import { CommonContainer } from 'insight-iclient-common/components/templates/CommonContainer';
+import { DropDownBox } from 'insight-iclient-common/components/templates/DropDownBox';
+import { Select } from 'insight-iclient-common/components/templates/Select';
+import { MessageBox } from 'insight-iclient-common/components/messagebox/MessageBox';
+import { Lang } from 'insight-iclient-common/lang/Lang';
 /**
  * @class ClientComputationView
  * @aliasclass Components.ClientComputationView
@@ -495,7 +495,7 @@ export var ClientComputationView = ComponentsViewBase.extend({
                     break;
             }
             this.viewModel.analysis(params, this.map);
-            this.viewModel.on('layerloaded',  (e)=> {
+            this.viewModel.on('layerloaded', (e) => {
                 analysingContainer.style.display = 'none';
                 analysisBtn.style.display = 'block';
                 /**
@@ -507,7 +507,7 @@ export var ClientComputationView = ComponentsViewBase.extend({
                 this._event.fire('analysissucceeded', { "layer": e.layer, "name": e.name })
             });
             // 若分析的结果为空
-            this.viewModel.on('analysisfailed', ()=> {
+            this.viewModel.on('analysisfailed', () => {
                 analysingContainer.style.display = 'none';
                 analysisBtn.style.display = 'block';
                 this.messageBox.showView(Lang.i18n('msg_resultIsEmpty'), "failure");

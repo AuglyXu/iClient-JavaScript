@@ -1,13 +1,13 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import '../core/Base';
- import { ServiceBase } from './ServiceBase';
- import { Util as CommonUtil } from '@supermap/iclient-common/commontypes/Util';
- import { DatasetService as CommonDatasetService } from '@supermap/iclient-common/iServer/DatasetService';
- import { CreateDatasetParameters } from '@supermap/iclient-common/iServer/CreateDatasetParameters';
- import { UpdateDatasetParameters } from '@supermap/iclient-common/iServer/UpdateDatasetParameters';
- 
+import '../core/Base';
+import { ServiceBase } from './ServiceBase';
+import { Util as CommonUtil } from 'insight-iclient-common/commontypes/Util';
+import { DatasetService as CommonDatasetService } from 'insight-iclient-common/iServer/DatasetService';
+import { CreateDatasetParameters } from 'insight-iclient-common/iServer/CreateDatasetParameters';
+import { UpdateDatasetParameters } from 'insight-iclient-common/iServer/UpdateDatasetParameters';
+
 /**
  * @class  DatasetService
  * @deprecatedclassinstance L.supermap.datasetService
@@ -24,11 +24,11 @@
  */
 export var DatasetService = ServiceBase.extend({
 
-    initialize: function (url,options) {
-        ServiceBase.prototype.initialize.call(this, url,options);
+    initialize: function (url, options) {
+        ServiceBase.prototype.initialize.call(this, url, options);
     },
 
-    
+
     /**
      * @function DatasetService.prototype.getDatasets
      * @description 数据集查询服务。
@@ -56,7 +56,7 @@ export var DatasetService = ServiceBase.extend({
             }
         });
         datasetService.getDatasetsService(datasourceName);
-        },
+    },
 
     /**
      * @function DatasetService.prototype.getDataset
@@ -99,21 +99,21 @@ export var DatasetService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      */
     setDataset(params, callback) {
-        if(!(params instanceof CreateDatasetParameters) && !(params instanceof UpdateDatasetParameters)){
+        if (!(params instanceof CreateDatasetParameters) && !(params instanceof UpdateDatasetParameters)) {
             return;
-        }else if (params instanceof CreateDatasetParameters) {
+        } else if (params instanceof CreateDatasetParameters) {
             var datasetParams = {
                 "datasetType": params.datasetType,
                 "datasetName": params.datasetName
             }
-        }else if(params instanceof UpdateDatasetParameters){
-             datasetParams = {
-                    "datasetName": params.datasetName,
-                    "isFileCache": params.isFileCache,
-                    "description": params.description,
-                    "prjCoordSys": params.prjCoordSys,
-                    "charset": params.charset
-                }
+        } else if (params instanceof UpdateDatasetParameters) {
+            datasetParams = {
+                "datasetName": params.datasetName,
+                "isFileCache": params.isFileCache,
+                "description": params.description,
+                "prjCoordSys": params.prjCoordSys,
+                "charset": params.charset
+            }
         }
         const me = this;
         const url = CommonUtil.urlPathAppend(me.url, `datasources/name/${params.datasourceName}/datasets/name/${params.datasetName}`);
@@ -155,7 +155,7 @@ export var DatasetService = ServiceBase.extend({
             }
         });
         datasetService.deleteDatasetService();
-        }
+    }
 });
 
 export var datasetService = function (url, options) {

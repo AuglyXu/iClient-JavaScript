@@ -6,8 +6,8 @@ import '../core/Base';
 import {
     ServiceBase
 } from './ServiceBase';
-import { MapService as CommonMapService } from '@supermap/iclient-common/iServer/MapService';
-import { TilesetsService } from '@supermap/iclient-common/iServer/TilesetsService';
+import { MapService as CommonMapService } from 'insight-iclient-common/iServer/MapService';
+import { TilesetsService } from 'insight-iclient-common/iServer/TilesetsService';
 /**
  * @class  MapService
  * @deprecatedclassinstance L.supermap.mapService
@@ -70,20 +70,20 @@ export var MapService = ServiceBase.extend({
      * @param {RequestCallback} callback - 回调函数。
      */
     getWkt(callback) {
-      var me = this;
-      var getMapStatusService = new CommonMapService(`${me.url}/prjCoordSys.wkt`, {
-          proxy: me.options.proxy,
-          withCredentials: me.options.withCredentials,
-          withoutFormatSuffix: true,
-          crossOrigin: me.options.crossOrigin,
-          headers: me.options.headers,
-          eventListeners: {
-              scope: me,
-              processCompleted: callback,
-              processFailed: callback
-          }, projection: me.options.projection
-      });
-      getMapStatusService.processAsync();
+        var me = this;
+        var getMapStatusService = new CommonMapService(`${me.url}/prjCoordSys.wkt`, {
+            proxy: me.options.proxy,
+            withCredentials: me.options.withCredentials,
+            withoutFormatSuffix: true,
+            crossOrigin: me.options.crossOrigin,
+            headers: me.options.headers,
+            eventListeners: {
+                scope: me,
+                processCompleted: callback,
+                processFailed: callback
+            }, projection: me.options.projection
+        });
+        getMapStatusService.processAsync();
     },
 
     /**

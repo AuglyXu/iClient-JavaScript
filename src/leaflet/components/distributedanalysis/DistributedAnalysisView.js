@@ -1,16 +1,16 @@
 /* Copyright© 2000 - 2022 SuperMap Software Co.Ltd. All rights reserved.
  * This program are made available under the terms of the Apache License, Version 2.0
  * which accompanies this distribution and is available at http://www.apache.org/licenses/LICENSE-2.0.html.*/
- import L from 'leaflet';
- import { ComponentsViewBase } from '../ComponentsViewBase';
- import { DistributedAnalysisViewModel } from './DistributedAnalysisViewModel';
- import { KernelDensityJobParameter } from '@supermap/iclient-common/iServer/KernelDensityJobParameter';
- import { MappingParameters } from '@supermap/iclient-common/iServer/MappingParameters';
- import { CommonContainer } from '@supermap/iclient-common/components/templates/CommonContainer';
- import { Select } from '@supermap/iclient-common/components/templates/Select';
- import { DropDownBox } from '@supermap/iclient-common/components/templates/DropDownBox';
- import { MessageBox } from '@supermap/iclient-common/components/messagebox/MessageBox';
- import { Lang } from '@supermap/iclient-common/lang/Lang';
+import L from 'leaflet';
+import { ComponentsViewBase } from '../ComponentsViewBase';
+import { DistributedAnalysisViewModel } from './DistributedAnalysisViewModel';
+import { KernelDensityJobParameter } from 'insight-iclient-common/iServer/KernelDensityJobParameter';
+import { MappingParameters } from 'insight-iclient-common/iServer/MappingParameters';
+import { CommonContainer } from 'insight-iclient-common/components/templates/CommonContainer';
+import { Select } from 'insight-iclient-common/components/templates/Select';
+import { DropDownBox } from 'insight-iclient-common/components/templates/DropDownBox';
+import { MessageBox } from 'insight-iclient-common/components/messagebox/MessageBox';
+import { Lang } from 'insight-iclient-common/lang/Lang';
 /**
  * @class DistributedAnalysisView
  * @aliasclass Components.DistributedAnalysisView
@@ -32,7 +32,7 @@
 export var DistributedAnalysisView = ComponentsViewBase.extend({
 
     initialize: function (processingUrl, options) {
-      ComponentsViewBase.prototype.initialize.apply(this, [options]);
+        ComponentsViewBase.prototype.initialize.apply(this, [options]);
         //初始化 ViewModel:
         this.viewModel = new DistributedAnalysisViewModel(processingUrl);
     },
@@ -53,7 +53,7 @@ export var DistributedAnalysisView = ComponentsViewBase.extend({
      * @private
      */
     _fillDataToView: function () {
-        
+
         // 获取数据集
         this.viewModel.on('datasetsloaded', (e) => {
             let datasetOptionsArr = e.result.dataset.datasetNames;
@@ -74,7 +74,7 @@ export var DistributedAnalysisView = ComponentsViewBase.extend({
      */
     _initView: function () {
         // 组件 container
-        let container = (new CommonContainer({title: Lang.i18n('title_distributedAnalysis')})).getElement();
+        let container = (new CommonContainer({ title: Lang.i18n('title_distributedAnalysis') })).getElement();
         container.classList.add('component-analysis');
         container.children[0].style.fontSize = '12px';
 
@@ -328,7 +328,7 @@ export var DistributedAnalysisView = ComponentsViewBase.extend({
             let params = getAnalysisParam();
             if (datasetSelectName.title === Lang.i18n('text_option_selectDataset')) {
                 this.messageBox.showView(Lang.i18n('msg_selectDataset'), "failure");
-            } else if ( weightFieldsSelectName.title === Lang.i18n('text_option_notSet')) {
+            } else if (weightFieldsSelectName.title === Lang.i18n('text_option_notSet')) {
                 this.messageBox.showView(Lang.i18n('msg_setTheWeightField'), "failure");
             } else {
                 this.messageBox.closeView();
@@ -344,9 +344,9 @@ export var DistributedAnalysisView = ComponentsViewBase.extend({
                      * @property {L.GeoJSON} layer - 结果图层。
                      * @property {string} name - 结果图层名称。
                      */
-                    this._event.fire('analysissucceeded', {'layer': e.layer, 'name': e.name})
+                    this._event.fire('analysissucceeded', { 'layer': e.layer, 'name': e.name })
                 });
-                
+
                 this.viewModel.on('analysisfailed', (e) => {
                     this.messageBox.showView(Lang.i18n('msg_theFieldNotSupportAnalysis'), "failure");
                     analysingContainer.style.display = 'none';
@@ -356,7 +356,7 @@ export var DistributedAnalysisView = ComponentsViewBase.extend({
                      * @description 分析失败后触发。
                      * @property {string} error - 服务器返回的错误。
                      */
-                    this._event.fire('analysisfailed', {'error': e.error})
+                    this._event.fire('analysisfailed', { 'error': e.error })
                 });
 
                 this.viewModel.analysis(params, this.map);

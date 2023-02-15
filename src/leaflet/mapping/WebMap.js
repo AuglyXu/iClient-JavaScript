@@ -5,18 +5,18 @@ import L from "leaflet";
 import jsonsql from "jsonsql";
 import proj4 from "proj4";
 import "../core/Base";
-import { BaiduCRS, TianDiTu_WGS84CRS, TianDiTu_MercatorCRS} from '../core/ExtendsCRS'
+import { BaiduCRS, TianDiTu_WGS84CRS, TianDiTu_MercatorCRS } from '../core/ExtendsCRS'
 import { crs as CRS } from '../core/Proj4Leaflet'
 import { toGeoJSON, getResolutionFromScaleDpi } from '../core/Util'
-import { FetchRequest as Request } from '@supermap/iclient-common/util/FetchRequest';
-import { GeoJSON as GeoJSONFormat } from '@supermap/iclient-common/format/GeoJSON';
-import { DataFormat } from '@supermap/iclient-common/REST';
-import { ServerFeature } from '@supermap/iclient-common/iServer/ServerFeature';
-import { GetFeaturesBySQLParameters } from '@supermap/iclient-common/iServer/GetFeaturesBySQLParameters';
-import { ThemeStyle } from '@supermap/iclient-common/style/ThemeStyle';
-import { Vector } from '@supermap/iclient-common/commontypes/Vector';
-import { Point } from '@supermap/iclient-common/commontypes/geometry/Point';
-import { Util } from '@supermap/iclient-common/commontypes/Util';
+import { FetchRequest as Request } from 'insight-iclient-common/util/FetchRequest';
+import { GeoJSON as GeoJSONFormat } from 'insight-iclient-common/format/GeoJSON';
+import { DataFormat } from 'insight-iclient-common/REST';
+import { ServerFeature } from 'insight-iclient-common/iServer/ServerFeature';
+import { GetFeaturesBySQLParameters } from 'insight-iclient-common/iServer/GetFeaturesBySQLParameters';
+import { ThemeStyle } from 'insight-iclient-common/style/ThemeStyle';
+import { Vector } from 'insight-iclient-common/commontypes/Vector';
+import { Point } from 'insight-iclient-common/commontypes/geometry/Point';
+import { Util } from 'insight-iclient-common/commontypes/Util';
 import {
     CartoCSSToLeaflet
 } from '../overlay/carto/CartoCSSToLeaflet';
@@ -824,7 +824,7 @@ export var WebMap = L.LayerGroup.extend({
                     } else {
                         addFeatures(sFeaturesArr);
                     }
-                }, function () {});
+                }, function () { });
             } else {
                 var newFeautures = [],
                     features = layerInfo.features;
