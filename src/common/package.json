@@ -1,7 +1,7 @@
 {
   "name": "insight-iclient-common",
   "description": "",
-  "version": "11.1.0-dev",
+  "version": "1.0.0",
   "keywords": [
     "SuperMap"
   ],
@@ -17,6 +17,7 @@
   "author": "xuxianzhe",
   "license": "Apache-2.0",
   "dependencies": {
+    "echarts":"5.4.0",
     "@elastic/elasticsearch": "^5.6.22",
     "fetch-ie8": "1.5.0",
     "fetch-jsonp": "1.1.3",
