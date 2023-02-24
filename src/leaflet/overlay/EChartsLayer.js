@@ -320,6 +320,7 @@ LeafletMapCoordSys.dimensions = LeafletMapCoordSys.prototype.dimensions;
 LeafletMapCoordSys.create = function (ecModel) {
     let coordSys;
     let leafletMap = ecModel.scheduler.ecInstance.leafletMap;
+    if (!leafletMap) return {}
     ecModel.eachComponent('LeafletMap', function (leafletMapModel) {
         if (!coordSys) {
             coordSys = new LeafletMapCoordSys(leafletMap);
@@ -339,6 +340,7 @@ LeafletMapCoordSys.create = function (ecModel) {
 };
 
 function _getMapOffset(map) {
+    if (!map) return [0, 0]
     const offset = map.containerPointToLayerPoint([0, 0]);
     const mapOffset = [offset.x || 0, offset.y || 0];
     return mapOffset;
