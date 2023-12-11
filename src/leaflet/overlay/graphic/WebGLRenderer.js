@@ -105,6 +105,7 @@ export var GraphicWebGLRenderer = L.Class.extend({
             this._container.height = size.y;
         }
         let mapPane = this.layer._map.getPanes().mapPane;
+        if(!mapPane) return;
         let point = mapPane._leaflet_pos;
 
         this._container.style[CSS_TRANSFORM] = 'translate(' +

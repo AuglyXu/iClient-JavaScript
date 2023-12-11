@@ -10520,6 +10520,7 @@
   	// @method isTooltipOpen(): boolean
   	// Returns `true` if the tooltip bound to this layer is currently open.
   	isTooltipOpen: function () {
+		if(!this._tooltip) return;
   		return this._tooltip.isOpen();
   	},
 
